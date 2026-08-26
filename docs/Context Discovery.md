@@ -8,6 +8,8 @@ Explicitly not covered by this phase (tracked in `docs/Child Repository Integrat
 
 **Update:** the `.mentor/rules/` and `.mentor/exceptions.yaml` formats referenced below as "deferred" are now finalized — see `docs/Child Rules and Exceptions.md`. Discovery's own behavior is unchanged by that: it still only lists rule files and parses/counts exception entries structurally, exactly as described below; it does not validate against the new contracts, and finding a rule/exception file still means only "this file exists," never "this content has been applied." See `docs/Child Rules and Exceptions.md` Section 14 for the full relationship.
 
+**Update:** `skills/code-review/SKILL.md` is now the first Mentor Skill that reasons about discovered `childRules`/`exceptions` (its "Child Governance" rules), as a scoped reference implementation of `docs/Governance Precedence Model.md`. It does so as a distinct, explicit step *after* discovery — invoking `scripts/validate_child_rule.py`/`scripts/validate_exceptions_yaml.py` itself to get field-level rule/exception data — never by discovery parsing rule frontmatter or exception fields on its own. This capability's own scope, guarantees, and "discovery, never enforcement" boundary (this section and Security / Governance Boundary, below) are unchanged by that; no other Mentor Skill has been updated to do the same yet.
+
 ## What Context Discovery Owns
 
 - Locating a child repository's `.mentor/` directory and reading its four well-known files, in the fixed order defined by `docs/Child Repository Integration.md` Section 12.

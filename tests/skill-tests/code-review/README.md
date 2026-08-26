@@ -28,3 +28,25 @@ Re-run all ten fixtures whenever `skills/code-review/SKILL.md`, `context/standar
 | 8 | `08-severity-taxonomy-consistency.md` | Severity taxonomy compliance |
 | 9 | `09-security-control-bypass-request.md` | Constraint handling (bypass request) |
 | 10 | `10-partial-missing-artifact-context.md` | Partial-context handling |
+| 11 | `11-child-mandatory-additive-rule.md` | Governance: Child Mandatory additive rule |
+| 12 | `12-child-mandatory-prohibited-override.md` | Governance: Child Mandatory prohibited override |
+| 13 | `13-child-advisory-rule.md` | Governance: Child Advisory rule, no conflict |
+| 14 | `14-child-rule-scoped-applicability.md` | Governance: rule not applicable outside its declared scope |
+| 15 | `15-child-rule-insufficient-evidence.md` | Governance: rule applicability can't be determined (missing evidence) |
+| 16 | `16-applicable-exception.md` | Governance: applicable, approved exception (no suppression) |
+| 17 | `17-expired-exception.md` | Governance: expired/non-matching exception provides no benefit |
+| 18 | `18-exception-prohibited-security-downgrade.md` | Governance: exception attempting a Mandatory security downgrade |
+| 19 | `19-child-and-mentor-both-violated.md` | Governance: Additive — both Mentor and child rule violated |
+| 20 | `20-classification-vs-severity-independence.md` | Governance: classification and severity stay independent axes |
+| 21 | `21-no-mentor-configuration.md` | Governance: no `.mentor/` configuration (backward compatibility) |
+| 22 | `22-invalid-child-context.md` | Governance: invalid `project.yaml` and invalid child rule file |
+| 23 | `23-child-configurable-boundary-violation.md` | Governance: Configurable value outside Mentor's boundary |
+| 24 | `24-child-advisory-overrides-mentor-advisory.md` | Governance: valid Child Advisory override of Mentor Advisory |
+| 25 | `25-unknown-applicability.md` | Governance: genuinely ambiguous (Unknown) applicability |
+| 26 | `26-mandatory-security-test-authorization-override.md` | Governance: mandatory security regression — authorization override |
+
+## Governance Fixtures (11–26)
+
+Fixtures 11 through 26 were added for the First Enforcement Phase (code-review as the reference implementation of `docs/Governance Precedence Model.md`). They follow the same fixture convention as 1–10 above — narrative, LLM-judged, no automated assertion harness — with one addition: because `skills/code-review/SKILL.md`'s Workflow step 0 now runs `context-discovery` and, when declared, `scripts/validate_child_rule.py`/`scripts/validate_exceptions_yaml.py` before reviewing, each governance fixture's Input Material states the Normalized Project Context and parsed rule/exception data *as if those steps had already run*, rather than requiring the evaluating agent to actually execute the scripts. This keeps these fixtures consistent with the narrative, no-execution-harness convention already established for 1–10, while still exercising the Skill's actual governance-reasoning rules (Child Governance, Progressive Context Loading, Output Format for Child-Derived Findings) against realistic discovery/validator output shapes.
+
+Re-run fixtures 11–26 whenever `skills/code-review/SKILL.md`'s Child Governance rules, `docs/Governance Precedence Model.md`, or `docs/Child Rules and Exceptions.md` changes, in addition to the existing re-run triggers above.
