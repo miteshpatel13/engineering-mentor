@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Local environment
+.env
+.env.*
+
+# Temporary
+tmp/
+temp/
+*.log
+
+# OS/editor backups
+*.swp
+*.swo
