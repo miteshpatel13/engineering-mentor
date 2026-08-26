@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Create a production-ready reusable Engineering Mentor Skill.
+description: Create a new, production-ready, reusable Engineering Mentor Skill that meets the Skill Development Standard. Use when defining a new global Skill from scratch, ensuring it has clear scope, triggers, workflow, constraints, and test scenarios before it is considered reusable.
 ---
 
 # Skill Creator

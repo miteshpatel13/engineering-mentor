@@ -1,0 +1,9 @@
+{
+    "name": "engineering-mentor",
+    "description": "Global engineering standards, Skills, Agents, SOPs, and development guidance for production software repositories.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Mitesh"
+    },
+    "repository": "https://github.com/miteshpatel13/engineering-mentor.git"
+}
