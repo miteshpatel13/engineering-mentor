@@ -1,0 +1,6 @@
+schemaVersion: 99
+name: future-service
+mentor:
+  version: ">=1.0.0 <2.0.0"
+stack:
+  language: [Rust]

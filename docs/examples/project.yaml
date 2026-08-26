@@ -1,0 +1,59 @@
+# Reference example: a fully populated .mentor/project.yaml
+#
+# This is a REFERENCE EXAMPLE, not a template to copy verbatim -- a real
+# project only needs the required fields (see docs/Project Profile Schema.md)
+# plus whichever optional fields are actually true for that project.
+#
+# Validates against docs/schema/project.schema.v1.json (schemaVersion 1).
+# Check it with:
+#   python3 scripts/validate_project_yaml.py docs/examples/project.yaml
+
+schemaVersion: 1
+
+name: order-service
+
+mentor:
+  version: ">=1.0.0 <2.0.0"
+
+stack:
+  language:
+    - TypeScript
+  runtime:
+    - Node.js
+  framework:
+    - NestJS
+  database:
+    - PostgreSQL
+  orm:
+    - Prisma
+  cache:
+    - Redis
+
+architecture:
+  style: modular-monolith
+  api: REST
+
+testing:
+  unit: Jest
+  integration: Supertest
+  e2e: Playwright
+
+deployment:
+  platform: AWS
+  containerized: true
+  orchestration: ECS
+  region: us-east-1
+
+infrastructure:
+  messageQueue:
+    - SQS
+  objectStorage:
+    - S3
+  cdn:
+    - CloudFront
+
+# Reserved for forward-compatible custom metadata not yet part of the
+# formal schema. Never deeply validated -- see docs/Project Profile Schema.md.
+extensions:
+  costCenter: platform-eng
+  onCallRotation: order-service-primary

@@ -1,0 +1,10 @@
+schemaVersion: 1
+name: malformed-service
+mentor:
+  version: ">=1.0.0 <2.0.0"
+stack:
+  language: TypeScript
+architecture:
+  style: hexagonal-turbo
+deployment:
+  containerized: "yes"

@@ -1,0 +1,6 @@
+schemaVersion: 1
+name: notification-worker
+mentor:
+  version: ">=1.0.0 <2.0.0"
+stack:
+  language: [Go]

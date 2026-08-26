@@ -1,0 +1,7 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_INVALID_MENTOR_VERSION_RANGE_SYNTAX"
+  ],
+  "warning_codes": []
+}

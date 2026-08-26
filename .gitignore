@@ -17,3 +17,7 @@ temp/
 # OS/editor backups
 *.swp
 *.swo
+
+# Python (schema validator scripts)
+__pycache__/
+*.pyc

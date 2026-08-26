@@ -1,0 +1,29 @@
+schemaVersion: 1
+name: order-service
+mentor:
+  version: ">=1.0.0 <2.0.0"
+stack:
+  language: [TypeScript]
+  runtime: [Node.js]
+  framework: [NestJS]
+  database: [PostgreSQL]
+  orm: [Prisma]
+  cache: [Redis]
+architecture:
+  style: modular-monolith
+  api: REST
+testing:
+  unit: Jest
+  integration: Supertest
+  e2e: Playwright
+deployment:
+  platform: AWS
+  containerized: true
+  orchestration: ECS
+  region: us-east-1
+infrastructure:
+  messageQueue: [SQS]
+  objectStorage: [S3]
+  cdn: [CloudFront]
+extensions:
+  costCenter: platform-eng

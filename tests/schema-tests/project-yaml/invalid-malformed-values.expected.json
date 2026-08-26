@@ -1,0 +1,9 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_INVALID_TYPE",
+    "E_INVALID_ENUM",
+    "E_INVALID_TYPE"
+  ],
+  "warning_codes": []
+}

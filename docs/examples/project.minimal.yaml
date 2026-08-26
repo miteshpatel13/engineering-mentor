@@ -1,0 +1,17 @@
+# Reference example: the minimum valid .mentor/project.yaml
+#
+# Only the four required fields: schemaVersion, name, mentor.version,
+# and stack.language (at least one entry). Everything else is optional.
+#
+# Validates against docs/schema/project.schema.v1.json (schemaVersion 1).
+
+schemaVersion: 1
+
+name: notification-worker
+
+mentor:
+  version: ">=1.0.0 <2.0.0"
+
+stack:
+  language:
+    - Go

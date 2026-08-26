@@ -1,0 +1,6 @@
+schemaVersion: 1
+name: bad-range-service
+mentor:
+  version: "whatever version works"
+stack:
+  language: [Python]

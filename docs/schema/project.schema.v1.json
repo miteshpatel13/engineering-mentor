@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/miteshpatel13/engineering-mentor/docs/schema/project.schema.v1.json",
+  "title": "Engineering Mentor Project Profile (schemaVersion 1)",
+  "description": "Machine-readable schema for a child repository's .mentor/project.yaml. This is the structural (syntactic) contract. scripts/validate_project_yaml.py implements this same structure plus additional semantic checks (Mentor version range self-consistency) that plain JSON Schema cannot express -- see docs/Project Profile Schema.md for the authoritative field-by-field reference.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "name",
+    "mentor",
+    "stack"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": {
+      "const": 1,
+      "description": "The MAJOR generation of the project.yaml contract this file conforms to. Only 1 is defined today."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project identifier. Recommended kebab-case (enforced as a warning, not a schema error, by the reference validator)."
+    },
+    "mentor": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(=|>=|<=|>|<)?\\d+\\.\\d+\\.\\d+(\\s+(=|>=|<=|>|<)?\\d+\\.\\d+\\.\\d+)*$",
+          "description": "Supported Mentor plugin versions, as a space-separated conjunction of comparator terms (e.g. '>=1.0.0 <2.0.0') or an exact version (e.g. '1.2.3'). This pattern checks syntax only; range self-consistency (e.g. a lower bound above the upper bound) is checked by scripts/validate_project_yaml.py."
+        }
+      }
+    },
+    "stack": {
+      "type": "object",
+      "required": [
+        "language"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "language": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "runtime": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "framework": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "database": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "orm": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "cache": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "style": {
+          "enum": [
+            "monolith",
+            "modular-monolith",
+            "microservices",
+            "serverless",
+            "event-driven",
+            "other"
+          ]
+        },
+        "styleNote": {
+          "type": "string"
+        },
+        "api": {
+          "enum": [
+            "REST",
+            "GraphQL",
+            "gRPC",
+            "WebSocket",
+            "other"
+          ]
+        },
+        "apiNote": {
+          "type": "string"
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Open map of test-category -> tool name (e.g. unit: Jest, integration: Supertest, e2e: Playwright)."
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "containerized": {
+          "type": "boolean"
+        },
+        "orchestration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "infrastructure": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "description": "Open map of infrastructure category -> list of technologies (e.g. messageQueue: [SQS], cdn: [CloudFront])."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Reserved, freeform namespace for forward-compatible custom metadata not yet part of the formal schema. Never deeply validated."
+    }
+  }
+}
