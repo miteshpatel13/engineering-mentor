@@ -13,10 +13,10 @@ Review in priority order:
 9. Readability
 
 For every finding, identify:
-- Severity
+- Severity — one of CRITICAL, HIGH, MEDIUM, LOW, or INFO, per `context/standards/Severity Taxonomy.md`. This is the Mentor's canonical severity vocabulary; do not use any other severity label.
 - Location
 - Problem
 - Impact
 - Recommended fix
 
-Separate required fixes from optional improvements. Do not demand unrelated refactoring.
+Separate blocking findings (CRITICAL/HIGH by default) from non-blocking recommendations (MEDIUM/LOW/INFO by default) — see `context/standards/Severity Taxonomy.md` for the full blocking rule. Do not demand unrelated refactoring.
