@@ -1,0 +1,5 @@
+- id: diag-endpoint-rate-limit
+  reason: internal-only diagnostics endpoint
+  rule: rate-limiting
+  scope: GET /internal/diagnostics
+  owner: platform-team

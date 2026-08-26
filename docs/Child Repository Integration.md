@@ -173,6 +173,8 @@ Only after these four are read does Mentor inspect relevant repository artifacts
 
 This mirrors the Mentor Operating Model's No Invention Rule: unknown information is inspected or explicitly identified as unknown, never assumed — but "inspected" means targeted, task-relevant inspection, not indiscriminately loading the entire repository into context.
 
+**This discovery order is now implemented**, not only specified: `skills/context-discovery/SKILL.md` and `scripts/discover_project_context.py` execute exactly the order above and produce a Normalized Project Context for other Mentor Skills to consume. See `docs/Context Discovery.md` for the full field reference, missing/invalid-context behavior, and the read-only guarantee. This remains a read-only, discovery-only capability — it does not enforce `.mentor/rules/` or `.mentor/exceptions.yaml`, and it does not perform Mentor-version compatibility blocking (Section 15); those remain future work (Section 22).
+
 ## 13. Mentor Skills + Child Skills
 
 Mentor Skills and child-owned Skills are compositional, not competitive. A Mentor Skill invocation conceptually evaluates:
@@ -308,8 +310,8 @@ This Contract defines the model; the following concrete implementation tasks are
 - ~~Finalize the `project.yaml` schema~~ -- **done**: see `docs/Project Profile Schema.md`, `docs/schema/project.schema.v1.json`. What remains: wiring a Mentor Skill to actually *consume* it (tracked separately below) and validating a declared `mentor.version` range against the installed Mentor plugin version at discovery time (also tracked below).
 - Finalize the `exceptions.yaml` schema (Section 17 defines required concepts, not a schema).
 - Define the `.mentor/rules/` format (Section 10).
-- Implement Mentor's context-discovery behavior described in Section 12 (currently a specification, not executable behavior).
-- Update existing Skills (`skills/code-review/SKILL.md` and the other review-type Skills) to actually consume `.mentor/` child context per Section 13 — today they only handle an ad hoc, in-request constraint via Constraint Handling.
+- ~~Implement Mentor's context-discovery behavior described in Section 12~~ — **done**: see `skills/context-discovery/SKILL.md`, `scripts/discover_project_context.py`, and `docs/Context Discovery.md`. What remains, explicitly deferred to a later phase: enforcing discovered `.mentor/rules/` and `.mentor/exceptions.yaml` against actual findings, Mentor/child conflict enforcement, and Mentor-version compatibility blocking (tracked separately below).
+- Update existing Skills to actually consume `.mentor/` child context per Section 13. `skills/code-review/SKILL.md` now has a light, additive Workflow step (step 0) that runs `context-discovery` and uses declared stack/architecture to adapt remediation phrasing when available — it does not yet enforce `.mentor/rules/` or `.mentor/exceptions.yaml` against findings. The other review-type Skills (`security-review`, `architecture-review`, `database-review`, `testing-review`, `performance-review`) are unchanged and still only handle an ad hoc, in-request constraint via their own Constraint Handling equivalents.
 - Decide and document a `project.yaml` schema generation-2 (`schemaVersion: 2`) policy trigger and process, if/when a breaking change to the profile shape is ever needed (see `docs/Project Profile Schema.md`'s Schema Versioning section).
 - Define compatibility validation for `mentor.version` ranges *against the installed Mentor plugin version at discovery time* (Section 15) -- the range's own syntax/self-consistency is now validated by `scripts/validate_project_yaml.py`; checking it against what's actually installed is the remaining piece.
 - Define the future mandatory-security-update policy referenced in Section 16.

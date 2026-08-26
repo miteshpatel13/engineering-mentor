@@ -9,5 +9,6 @@ Reserved for deterministic repository automation such as:
 - Skill test runners
 - Release validation
 - `.mentor/project.yaml` schema validation (`validate_project_yaml.py`, `run_project_yaml_tests.py` -- see `docs/Project Profile Schema.md`)
+- Mentor Context Discovery (`discover_project_context.py`, `run_context_discovery_tests.py` -- see `docs/Context Discovery.md` and `skills/context-discovery/SKILL.md`)
 
 Automation should be safe, reproducible, and documented.

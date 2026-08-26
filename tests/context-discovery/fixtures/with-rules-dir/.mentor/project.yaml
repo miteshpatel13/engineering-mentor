@@ -1,0 +1,18 @@
+schemaVersion: 1
+name: fixture-child
+mentor:
+  version: ">=1.0.0 <2.0.0"
+stack:
+  language: [TypeScript]
+  runtime: [Node.js]
+  framework: [NestJS]
+  database: [PostgreSQL]
+  orm: [Prisma]
+architecture:
+  style: modular-monolith
+  api: REST
+testing:
+  unit: Jest
+deployment:
+  platform: AWS
+  containerized: true
