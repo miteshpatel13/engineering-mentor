@@ -49,6 +49,8 @@ Child answers:
 
 Project-specific requirements can override generic Mentor guidance when justified. Security requirements and explicit user requirements remain highest priority.
 
+**For the standing, structural question of how a child repository's own declared rules (`.mentor/rules/`) relate to Mentor's own Mandatory/Configurable/Advisory/Informational rules** — as opposed to a single, live, in-session instruction — `docs/Governance Precedence Model.md` is the authoritative, detailed specification. It refines "generic Mentor guidance" into Mentor's own four classification tiers and establishes, without exception, that no child rule (however classified) can weaken a Mentor Mandatory rule. This paragraph's statement about live, in-session explicit user requests is unaffected and unresolved by that document — see its Section 15.3.
+
 ## No Invention Rule
 
 The Mentor must never invent repository facts. Unknown information must be inspected or explicitly identified as unknown.

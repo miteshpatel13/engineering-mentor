@@ -77,25 +77,11 @@ This is a deliberate, documented limitation, not an oversight: **exact scope-mat
 
 ## 7. Rule Precedence
 
-Restating `docs/Child Repository Integration.md` Section 8's conflict-resolution order, with child rules positioned per their classification:
+The full, authoritative precedence order — including how Configurable and Advisory child rules relate to each other and to Mentor's own tiers, the six conflict-type categories, and expected future handling for each — now lives in one place: `docs/Governance Precedence Model.md`. This section does not restate it, to avoid a third copy of the same model drifting out of sync with the other two (`docs/Child Repository Integration.md` Section 8/18 being the second).
 
-```text
-Mentor Mandatory
-      >
-Child Mandatory
-      >
-Child Configurable
-      >
-Child Advisory
-      >
-Mentor Advisory
-      >
-Informational guidance
-```
+**The one sentence worth repeating here, because it's the sentence this whole document exists to protect:** a child rule can add a *stricter* requirement; it can never weaken or disable a Mentor Mandatory security/safety requirement — the same VALID/INVALID distinction shown in Section 4, and `docs/Governance Precedence Model.md` Section 5's worked examples.
 
-**The security boundary is explicit and absolute:** a child rule can add a *stricter* requirement; it can never weaken or disable a Mentor Mandatory security/safety requirement. This is the same VALID/INVALID distinction shown in Section 4 — restated here because Section 4 is about classification semantics and this section is about the resulting precedence order, and both need to say it plainly rather than relying on the reader to infer one from the other.
-
-**This document only documents this order — it does not execute it.** No validator, Skill, or script in this phase evaluates two rules against each other and picks a winner. Executing precedence when an actual conflict is detected is future enforcement work (Section 15).
+**This document only documents rule content and format — it does not execute precedence.** No validator, Skill, or script in this phase evaluates two rules against each other and picks a winner. Executing precedence when an actual conflict is detected is future enforcement work (Section 15, and `docs/Governance Precedence Model.md` Section 16).
 
 ## 8. Exceptions
 

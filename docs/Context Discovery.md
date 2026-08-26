@@ -19,7 +19,7 @@ Explicitly not covered by this phase (tracked in `docs/Child Repository Integrat
 ## What Context Discovery Does Not Own
 
 - **Enforcement.** Discovered `.mentor/rules/` and `.mentor/exceptions.yaml` are surfaced as data, never applied to suppress, downgrade, or alter a finding. That is future work (Section 22).
-- **Conflict resolution.** `docs/Child Repository Integration.md` Sections 8 and 18 govern Mentor/child conflicts; this capability supplies facts to that process, it doesn't run it.
+- **Conflict resolution.** `docs/Governance Precedence Model.md` (which restates and refines `docs/Child Repository Integration.md` Sections 8 and 18) governs Mentor/child conflicts; this capability supplies facts to that process, it doesn't run it.
 - **Compatibility enforcement.** See Mentor Compatibility below — discovery reports facts about the declared range, never a pass/fail compatibility verdict, and never blocks anything on that basis.
 - **Governance.** A child cannot use anything discovery surfaces to weaken a Mentor Mandatory rule, downgrade a security severity, or disable a security check — see Security / Governance Boundary below and `docs/Child Repository Integration.md` Section 19, which remains the authoritative, unmodified boundary.
 - **Reading the whole repository.** Discovery never performs a full or recursive scan; artifact discovery is a short, fixed candidate list, existence-only.

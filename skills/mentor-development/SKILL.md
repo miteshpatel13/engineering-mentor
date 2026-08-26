@@ -21,7 +21,7 @@ Does not apply to work inside a child repository's own `.claude/skills/`, `.clau
 - Child = project/domain-specific knowledge: business rules, project architecture, technology stack, repository structure, database schema, API contracts, and project-specific Skills/Agents/rules.
 - Mentor answers "how should this be engineered?"; a child repository answers "what does this system do, and what constraints does this project have?"
 - Never invent child-repository facts. Inspect the child repository before applying repository-sensitive guidance, and adapt global principles to that child's actual technology and architecture rather than forcing a mismatched pattern — e.g. adapt the underlying principle behind a database standard to MongoDB rather than forcing a PostgreSQL-shaped rule onto it.
-- A child's legitimate project-specific requirement can override generic Mentor guidance when justified. Conflict priority: (1) explicit user request, (2) security and safety requirements, (3) child repository requirements and architecture, (4) Engineering Mentor global standards, (5) general engineering best practices.
+- For the standing, structural relationship between Mentor's own rules and a child repository's persisted rules/configuration, `docs/Governance Precedence Model.md` is the single authoritative specification — this Skill defers to it rather than maintaining a separate priority list. How a live, in-session explicit user instruction interacts with a persisted Mentor Mandatory rule is a distinct question, deliberately left unresolved by that document (see its Section 15.3) and by this Skill.
 
 ## Global vs Project-Specific Responsibilities
 
