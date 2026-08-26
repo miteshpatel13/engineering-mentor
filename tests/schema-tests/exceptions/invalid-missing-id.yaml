@@ -1,0 +1,5 @@
+- rule: pagination-required
+  reason: missing id field on purpose
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: requested

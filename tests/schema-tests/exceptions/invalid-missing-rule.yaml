@@ -1,0 +1,5 @@
+- id: missing-rule-field
+  reason: missing rule field on purpose
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: requested

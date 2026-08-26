@@ -1,0 +1,6 @@
+- id: bad-status
+  rule: pagination-required
+  reason: status is not one of the four supported values
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: pending

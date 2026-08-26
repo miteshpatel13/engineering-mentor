@@ -1,0 +1,14 @@
+- id: legacy-report-no-pagination
+  rule: pagination-required
+  reason: legacy endpoint pending deprecation in Q3
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: requested
+- id: diagnostics-rate-limit
+  rule: rate-limiting
+  reason: internal-only diagnostics endpoint, not internet-reachable
+  scope: "GET /internal/diagnostics"
+  owner: platform-team
+  status: approved
+  approvedBy: jane.doe
+  approvedAt: "2026-02-01"

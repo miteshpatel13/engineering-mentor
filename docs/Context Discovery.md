@@ -6,6 +6,8 @@ Implemented (this phase). This document is the field-by-field reference for the 
 
 Explicitly not covered by this phase (tracked in `docs/Child Repository Integration.md` Section 22): enforcing discovered `.mentor/rules/`, enforcing discovered `.mentor/exceptions.yaml`, resolving Mentor/child conflicts, blocking on Mentor-version compatibility, or automatically upgrading a child's Mentor version.
 
+**Update:** the `.mentor/rules/` and `.mentor/exceptions.yaml` formats referenced below as "deferred" are now finalized — see `docs/Child Rules and Exceptions.md`. Discovery's own behavior is unchanged by that: it still only lists rule files and parses/counts exception entries structurally, exactly as described below; it does not validate against the new contracts, and finding a rule/exception file still means only "this file exists," never "this content has been applied." See `docs/Child Rules and Exceptions.md` Section 14 for the full relationship.
+
 ## What Context Discovery Owns
 
 - Locating a child repository's `.mentor/` directory and reading its four well-known files, in the fixed order defined by `docs/Child Repository Integration.md` Section 12.
@@ -85,7 +87,7 @@ Populated directly from `project.yaml`'s corresponding sections when the file is
 | Field | Meaning |
 |---|---|
 | `declared` | Whether `.mentor/rules/` exists. |
-| `files` | `[{path, sizeBytes}, ...]` for every file directly inside `rules/`. Content is not parsed or interpreted — the format of an individual rule file is deferred (`docs/Child Repository Integration.md` Section 22). |
+| `files` | `[{path, sizeBytes}, ...]` for every file directly inside `rules/`. Content is not parsed or interpreted — the frontmatter/format of an individual rule file is now defined in `docs/Child Rules and Exceptions.md`, but discovery still does not validate against it; running `scripts/validate_child_rule.py` is a separate, explicit step. |
 | `note` | A fixed string reiterating that these are discovered, not enforced, in this phase. |
 
 ### `exceptions`
@@ -95,7 +97,7 @@ Populated directly from `project.yaml`'s corresponding sections when the file is
 | `declared` | Whether `.mentor/exceptions.yaml` exists. |
 | `path` | Its relative path, or `null`. |
 | `parsed` | Whether the file parsed as valid YAML — `null` if the file doesn't exist. |
-| `entryCount` | Number of entries if the parsed document is a list or mapping; `0` for an empty/null document; `null` if it didn't parse or parsed to something else. |
+| `entryCount` | Number of entries if the parsed document is a list or mapping; `0` for an empty/null document; `null` if it didn't parse or parsed to something else. `docs/Child Rules and Exceptions.md` now formalizes the top-level shape as a list of exception objects — discovery's own `entryCount` logic (list-or-mapping, generic) is unchanged and does not itself enforce that shape; running `scripts/validate_exceptions_yaml.py` is a separate, explicit step. |
 | `note` | A fixed string reiterating that discovery does not change finding/severity behavior in this phase. |
 
 ### `discovery`

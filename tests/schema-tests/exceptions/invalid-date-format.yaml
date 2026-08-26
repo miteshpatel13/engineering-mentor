@@ -1,0 +1,7 @@
+- id: bad-date
+  rule: pagination-required
+  reason: expiresAt uses the wrong date format
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: requested
+  expiresAt: "09/01/2026"

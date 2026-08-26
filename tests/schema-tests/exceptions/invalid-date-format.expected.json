@@ -1,0 +1,7 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_INVALID_DATE"
+  ],
+  "warning_codes": []
+}

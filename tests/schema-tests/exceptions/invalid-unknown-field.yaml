@@ -1,0 +1,7 @@
+- id: attempted-disable
+  rule: sql-injection-check
+  reason: attempting to disable a Mentor Mandatory security check
+  scope: everywhere
+  owner: someone
+  status: approved
+  disable: sql-injection-check

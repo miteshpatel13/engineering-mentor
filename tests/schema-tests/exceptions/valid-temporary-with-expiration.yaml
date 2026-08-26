@@ -1,0 +1,9 @@
+- id: legacy-report-no-pagination
+  rule: pagination-required
+  reason: legacy endpoint pending deprecation, replacement ships next quarter
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: approved
+  approvedBy: jane.doe
+  approvedAt: "2026-01-15"
+  expiresAt: "2026-09-01"

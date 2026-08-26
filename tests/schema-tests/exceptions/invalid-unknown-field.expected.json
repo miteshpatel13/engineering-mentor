@@ -1,0 +1,9 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_UNKNOWN_FIELD"
+  ],
+  "warning_codes": [
+    "W_APPROVED_WITHOUT_APPROVAL_METADATA"
+  ]
+}

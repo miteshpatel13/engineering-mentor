@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-mentor.internal/schema/exceptions.schema.v1.json",
+  "title": "Engineering Mentor .mentor/exceptions.yaml (schema generation 1)",
+  "description": "Schema for the top-level list of exception entries in .mentor/exceptions.yaml. See docs/Child Rules and Exceptions.md for the full field-by-field reference, lifecycle semantics, and the security boundary this schema deliberately enforces via additionalProperties: false.",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/exception"
+  },
+  "$defs": {
+    "exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "rule", "reason", "scope", "owner", "status"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?$",
+          "description": "Unique identifier for this exception within the file. Kebab-case recommended."
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifier of the affected rule. Either a child rule id (matching a .mentor/rules/<id>.md file's id) or a free-text reference to the affected Mentor rule/standard (e.g. 'context/standards/Security Standards.md#rate-limiting'), since Mentor rules do not currently carry a formal individual identifier scheme (see docs/Child Repository Integration.md Section 22). This field is a reference for humans and future tooling -- it is never interpreted as an instruction to alter that rule's behavior."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The engineering justification for why the rule doesn't apply as stated, for this scope."
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Exactly what this exception covers -- a specific endpoint, module, or finding category. Never a blanket exemption. Free text; exact machine-matching semantics are deferred (see docs/Child Rules and Exceptions.md Section 6)."
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who owns / accepted the risk for this exception."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["requested", "approved", "rejected", "expired"],
+          "description": "Approval lifecycle state. 'requested' also covers what is colloquially an 'under-review' exception -- see docs/Child Rules and Exceptions.md Section 9 for the terminology mapping. Evaluating whether an 'approved' exception has actually passed its expiresAt date and should be treated as expired is NOT performed by this schema or by Mentor Context Discovery -- see Section 15 (Enforcement -- Future Phase)."
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional supporting detail beyond 'reason' -- e.g. a description of a compensating control, or a reference to where a security review or sign-off is recorded. Never a URL/credential to an external system this schema depends on."
+        },
+        "approvedBy": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who approved this exception, if status is 'approved'. Recorded as plain metadata only -- not connected to any external approval system in this phase."
+        },
+        "approvedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "ISO 8601 date (YYYY-MM-DD) this exception was approved."
+        },
+        "createdAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "ISO 8601 date (YYYY-MM-DD) this exception was first recorded."
+        },
+        "expiresAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "ISO 8601 date (YYYY-MM-DD) after which this exception should be re-reviewed / is considered expired. Absence means this is a permanent exception (no automatic expiration). Presence means this is a temporary exception. See docs/Child Rules and Exceptions.md Section 9."
+        }
+      }
+    }
+  }
+}

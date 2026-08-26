@@ -1,0 +1,6 @@
+id: this-should-be-a-list-not-a-mapping
+rule: pagination-required
+reason: top-level document is a mapping instead of a list
+scope: "GET /v1/legacy-report"
+owner: api-team
+status: requested

@@ -1,0 +1,6 @@
+- id: skip-auth-admin-panel
+  rule: authorization-required
+  reason: requester asked to skip authorization checks on the admin panel for convenience
+  scope: "All /admin/* routes"
+  owner: platform-team
+  status: rejected

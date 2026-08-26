@@ -1,0 +1,78 @@
+# EXAMPLE FILE -- for documentation purposes only. This is not a real
+# .mentor/exceptions.yaml in this repository. It illustrates the
+# exceptions.yaml contract defined in docs/Child Rules and Exceptions.md
+# and validated by docs/schema/exceptions.schema.v1.json.
+#
+# Every entry here is a scoped, owned, reasoned deviation from a specific
+# rule -- never a blanket exemption, and never a mechanism to disable a
+# Mentor Mandatory security requirement (see Section 11, Security
+# Boundaries, in the accompanying document).
+
+# Temporary exception: has an expiresAt, so this is a temporary
+# (not permanent) exception -- it should be re-reviewed by that date.
+- id: legacy-report-no-pagination
+  rule: pagination-required
+  reason: >-
+    /v1/legacy-report is a deprecated endpoint scheduled for removal;
+    adding pagination now would require client changes we don't want to
+    make for a route being deleted in the next quarter.
+  scope: "GET /v1/legacy-report only -- does not apply to any other endpoint"
+  owner: api-team
+  status: approved
+  approvedBy: jane.doe
+  approvedAt: "2026-01-15"
+  expiresAt: "2026-09-01"
+  evidence: "Deprecation tracked in ROADMAP.md under 'Q3 2026 removals'"
+
+# Permanent exception: no expiresAt set, so this is treated as permanent
+# until someone explicitly revisits it -- there is no automatic
+# expiration to rely on, which is exactly why an owner and a reason are
+# still required even for a "permanent" entry.
+- id: diagnostics-endpoint-rate-limit
+  rule: rate-limiting
+  reason: >-
+    This endpoint is internal-only, reachable solely from the private
+    VPC, and has no public DNS entry -- rate limiting adds operational
+    complexity with no corresponding abuse-prevention benefit here.
+  scope: "GET /internal/diagnostics only -- an internal-only, VPC-restricted route"
+  owner: platform-team
+  status: approved
+  approvedBy: platform-lead
+  approvedAt: "2025-11-03"
+  evidence: "Network policy restricting this route to the internal VPC is defined in infra/network-policies/internal-only.yaml"
+
+# Expired exception: status is "expired" -- this reflects that the
+# exception's review window has passed and it is no longer active.
+# Automatically detecting and flagging an expired exception based on
+# today's date vs. expiresAt is NOT implemented by Context Discovery in
+# this phase (see Section 15, Enforcement -- Future Phase); a human
+# updated this entry's status by hand after the review date passed.
+- id: old-migration-raw-sql
+  rule: 02-database-conventions
+  reason: >-
+    A one-time backfill script needed a raw SQL query for a bulk update
+    that Prisma's query builder couldn't express efficiently at the time.
+  scope: "scripts/one-time-backfill-2025-06.js (script has since been deleted)"
+  owner: data-team
+  status: expired
+  createdAt: "2025-06-01"
+  expiresAt: "2025-07-01"
+
+# Rejected exception: recorded even though it was NOT granted, so the
+# request and the reasoning for declining it stay visible rather than
+# disappearing. A rejected exception changes nothing about how the
+# underlying finding is reported -- it is not, and never becomes, an
+# approved deviation.
+- id: skip-authorization-admin-panel
+  rule: authorization-required
+  reason: >-
+    Requester asked to skip authorization checks on the admin panel
+    because "it's only used internally by two people."
+  scope: "All /admin/** routes"
+  owner: platform-team
+  status: rejected
+  evidence: >-
+    Rejected in security review 2026-02-10: internal-only usage today
+    does not bound future usage, and authorization is a Mentor Mandatory
+    requirement this project cannot exempt itself from informally --
+    see docs/Child Rules and Exceptions.md Section 11.

@@ -1,0 +1,12 @@
+- id: dup-exception
+  rule: pagination-required
+  reason: first entry
+  scope: "GET /v1/legacy-report"
+  owner: api-team
+  status: requested
+- id: dup-exception
+  rule: rate-limiting
+  reason: second entry reusing the same id by mistake
+  scope: "GET /internal/diagnostics"
+  owner: platform-team
+  status: requested
