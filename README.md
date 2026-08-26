@@ -48,7 +48,8 @@ engineering-mentor/
 │   ├── performance-review/SKILL.md
 │   ├── database-review/SKILL.md
 │   ├── api-design/SKILL.md
-│   └── testing-review/SKILL.md
+│   ├── testing-review/SKILL.md
+│   └── mentor-development/SKILL.md
 │
 ├── agents/                      # specialized Mentor Agents
 │   └── mentor-reviewer.md
@@ -69,10 +70,11 @@ engineering-mentor/
 ├── tests/skill-tests/           # reserved for Skill test scenarios
 ├── scripts/                     # reserved for repository automation (validation, linting)
 │
-├── CLAUDE.md                    # operating instructions for Claude when acting as the Mentor
 ├── README.md
 └── .gitignore
 ```
+
+There is no root `CLAUDE.md` — a plugin's root `CLAUDE.md` is not loaded as project context by Claude Code, so it cannot be relied on to ship instructions with the plugin. Guidance about developing, maintaining, and governing this repository lives in `skills/mentor-development/SKILL.md` instead, which *is* loaded as part of the plugin's Skill surface.
 
 **Directory roles, precisely:**
 
@@ -96,6 +98,7 @@ Once this plugin is installed, its Skills are invoked under the plugin namespace
 /engineering-mentor:skill-creator
 /engineering-mentor:skill-tester
 /engineering-mentor:skill-reviewer
+/engineering-mentor:mentor-development
 ```
 
 Each `SKILL.md`'s `name` frontmatter field matches its directory name exactly, and each `description` states what the Skill does, when to use it, and what kind of engineering problem it addresses — so Claude can select the right Skill without an explicit slash command.
