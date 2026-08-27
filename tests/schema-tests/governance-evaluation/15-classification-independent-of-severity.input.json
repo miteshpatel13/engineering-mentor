@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-y.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-y",
+          "title": "child-y",
+          "classification": "mandatory",
+          "scope": "y",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-y",
+        "mentorRequirementTier": "mentor_mandatory",
+        "mentorRequirementDescription": "d",
+        "applicability": "applies",
+        "relationship": "disagrees"
+      }
+    ]
+  }
+}

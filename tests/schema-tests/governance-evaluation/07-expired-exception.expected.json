@@ -1,0 +1,10 @@
+{
+  "exceptionEvaluations": [
+    {
+      "exceptionId": "exc-old",
+      "classification": "inactive",
+      "handling": "none"
+    }
+  ],
+  "prohibitedOverrideCount": 0
+}

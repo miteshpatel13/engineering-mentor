@@ -1,0 +1,11 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-admin-auth-optional",
+      "classification": "prohibited_override",
+      "handling": "preserve_mentor_and_flag"
+    }
+  ],
+  "conflictCount": 0,
+  "prohibitedOverrideCount": 1
+}

@@ -1,0 +1,10 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-ambiguous",
+      "classification": "unknown",
+      "handling": "insufficient_evidence"
+    }
+  ],
+  "insufficientEvidenceCount": 1
+}

@@ -1,0 +1,12 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-a",
+      "classification": "additive"
+    },
+    {
+      "ruleId": "child-b",
+      "classification": "compatible"
+    }
+  ]
+}

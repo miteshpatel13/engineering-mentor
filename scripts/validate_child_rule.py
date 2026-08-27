@@ -194,10 +194,11 @@ def main():
                 "files": {
                     fname: {
                         "valid": len([f for f in findings if f.level == "error"]) == 0,
+                        "frontmatter": fm if isinstance(fm, dict) else None,
                         "errors": [f.to_dict() for f in findings if f.level == "error"],
                         "warnings": [f.to_dict() for f in findings if f.level == "warning"],
                     }
-                    for fname, (_fm, findings) in per_file.items()
+                    for fname, (fm, findings) in per_file.items()
                 },
                 "directoryErrors": [f.to_dict() for f in dir_findings],
             }, indent=2))
@@ -218,6 +219,7 @@ def main():
     if args.json:
         print(json.dumps({
             "valid": len(errors) == 0,
+            "frontmatter": _frontmatter if isinstance(_frontmatter, dict) else None,
             "errors": [f.to_dict() for f in errors],
             "warnings": [f.to_dict() for f in warnings],
         }, indent=2))

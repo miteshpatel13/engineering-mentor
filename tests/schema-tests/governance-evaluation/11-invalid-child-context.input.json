@@ -1,0 +1,10 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": false
+    }
+  },
+  "assertions": {}
+}

@@ -1,0 +1,10 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-x",
+      "classification": "conflict",
+      "handling": "surface_conflict_tied"
+    }
+  ],
+  "conflictCount": 1
+}

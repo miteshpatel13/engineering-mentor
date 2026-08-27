@@ -1,0 +1,12 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-mandatory-logformat",
+      "classification": "conflict",
+      "handling": "surface_conflict_child_favored"
+    }
+  ],
+  "conflictCount": 1,
+  "prohibitedOverrideCount": 0,
+  "advisoryOverrideCount": 0
+}

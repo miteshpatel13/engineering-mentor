@@ -1,0 +1,33 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "exceptions": {
+    "valid": true,
+    "entries": [
+      {
+        "id": "exc-old",
+        "rule": "child-configurable-orm",
+        "scope": "legacy module",
+        "status": "expired",
+        "expiresAt": "2024-01-01"
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "assertions": {
+    "exceptions": [
+      {
+        "exceptionId": "exc-old",
+        "targetRuleTier": "child_configurable",
+        "targetRuleDescription": "raw SQL",
+        "applicability": "applies"
+      }
+    ]
+  }
+}

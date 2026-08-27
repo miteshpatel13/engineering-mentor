@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-mandatory-prisma.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-mandatory-prisma",
+          "title": "child-mandatory-prisma",
+          "classification": "mandatory",
+          "scope": "database access",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-mandatory-prisma",
+        "mentorRequirementTier": "mentor_mandatory",
+        "mentorRequirementDescription": "SQL must be safely parameterized",
+        "applicability": "applies",
+        "relationship": "narrows"
+      }
+    ]
+  }
+}

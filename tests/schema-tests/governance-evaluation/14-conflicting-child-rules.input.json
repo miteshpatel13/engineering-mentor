@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-x.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-x",
+          "title": "child-x",
+          "classification": "configurable",
+          "scope": "orm choice",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-x",
+        "mentorRequirementTier": "child_configurable",
+        "mentorRequirementDescription": "a different, conflicting Configurable-tier requirement from another source",
+        "applicability": "applies",
+        "relationship": "disagrees"
+      }
+    ]
+  }
+}

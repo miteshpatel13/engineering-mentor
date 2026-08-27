@@ -1,0 +1,12 @@
+{
+  "exceptionEvaluations": [
+    {
+      "exceptionId": "exc-1",
+      "classification": "exception_applicable"
+    },
+    {
+      "exceptionId": "exc-2",
+      "classification": "exception_applicable"
+    }
+  ]
+}

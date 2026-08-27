@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-advisory-naming.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-advisory-naming",
+          "title": "child-advisory-naming",
+          "classification": "advisory",
+          "scope": "variable naming",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-advisory-naming",
+        "mentorRequirementTier": "mentor_advisory",
+        "mentorRequirementDescription": "prefer camelCase",
+        "applicability": "applies",
+        "relationship": "replaces"
+      }
+    ]
+  }
+}

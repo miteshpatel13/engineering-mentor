@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-admin-auth-optional.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-admin-auth-optional",
+          "title": "child-admin-auth-optional",
+          "classification": "mandatory",
+          "scope": "/admin routes",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-admin-auth-optional",
+        "mentorRequirementTier": "mentor_mandatory",
+        "mentorRequirementDescription": "Authorization is required",
+        "applicability": "applies",
+        "relationship": "asserts_exempt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-advisory-naming",
+      "classification": "override",
+      "handling": "use_child"
+    }
+  ],
+  "conflictCount": 0,
+  "prohibitedOverrideCount": 0,
+  "advisoryOverrideCount": 1
+}

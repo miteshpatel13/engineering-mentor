@@ -1,0 +1,11 @@
+{
+  "exceptionEvaluations": [
+    {
+      "exceptionId": "exc-orm-choice",
+      "classification": "exception_applicable",
+      "handling": "informational_only_no_suppression"
+    }
+  ],
+  "prohibitedOverrideCount": 0,
+  "insufficientEvidenceCount": 0
+}

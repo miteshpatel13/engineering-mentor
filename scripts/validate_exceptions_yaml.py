@@ -176,6 +176,7 @@ def main():
     if args.json:
         print(json.dumps({
             "valid": len(errors) == 0,
+            "entries": doc if isinstance(doc, list) else None,
             "errors": [f.to_dict() for f in errors],
             "warnings": [f.to_dict() for f in warnings],
         }, indent=2))

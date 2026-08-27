@@ -1,0 +1,33 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "exceptions": {
+    "valid": true,
+    "entries": [
+      {
+        "id": "exc-skip-auth",
+        "rule": "n/a",
+        "scope": "/admin",
+        "status": "approved",
+        "expiresAt": null
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "assertions": {
+    "exceptions": [
+      {
+        "exceptionId": "exc-skip-auth",
+        "targetRuleTier": "mentor_mandatory",
+        "targetRuleDescription": "authorization required",
+        "applicability": "applies"
+      }
+    ]
+  }
+}

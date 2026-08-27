@@ -154,7 +154,7 @@ Every time two requirements are compared, the relationship between them falls in
 
 ## 11. Conflict Resolution — Future Behavior (Documentation Only)
 
-**Nothing in this phase implements any of the following.** This section documents the *expected, deterministic behavior* a future enforcement phase must produce, so that phase has a specification to build against rather than inventing resolution logic under time pressure — mirroring exactly how `docs/Child Rules and Exceptions.md` Section 15 scoped its own deferred enforcement work.
+**Nothing in this phase implements any of the following.** (`scripts/evaluate_governance.py`, added in a later phase, implements this table's classification step as code -- see `docs/Governance Evaluation.md`. It implements *classification only*: it does not act on the result, does not suppress or downgrade any finding, and does not make this section's "Expected future handling" column true end-to-end -- a calling Skill still decides what to do with a returned classification, exactly as this section anticipates.) This section documents the *expected, deterministic behavior* a future enforcement phase must produce, so that phase has a specification to build against rather than inventing resolution logic under time pressure — mirroring exactly how `docs/Child Rules and Exceptions.md` Section 15 scoped its own deferred enforcement work.
 
 | Conflict type | Expected future handling |
 |---|---|

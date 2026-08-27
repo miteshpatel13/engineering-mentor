@@ -1,0 +1,6 @@
+{
+  "mentorConfigured": false,
+  "warningSubstrings": [
+    "no .mentor/ configuration discovered"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-advisory-formatting.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-advisory-formatting",
+          "title": "child-advisory-formatting",
+          "classification": "advisory",
+          "scope": "code style",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-advisory-formatting",
+        "mentorRequirementTier": "mentor_advisory",
+        "mentorRequirementDescription": "prefer 2-space indent",
+        "applicability": "applies",
+        "relationship": "unrelated"
+      }
+    ]
+  }
+}

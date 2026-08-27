@@ -1,0 +1,46 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "exceptions": {
+    "valid": true,
+    "entries": [
+      {
+        "id": "exc-1",
+        "rule": "child-a",
+        "scope": "s1",
+        "status": "approved",
+        "expiresAt": "2027-01-01"
+      },
+      {
+        "id": "exc-2",
+        "rule": "child-b",
+        "scope": "s2",
+        "status": "approved",
+        "expiresAt": "2027-01-01"
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "assertions": {
+    "exceptions": [
+      {
+        "exceptionId": "exc-1",
+        "targetRuleTier": "child_configurable",
+        "targetRuleDescription": "d1",
+        "applicability": "applies"
+      },
+      {
+        "exceptionId": "exc-2",
+        "targetRuleTier": "child_configurable",
+        "targetRuleDescription": "d2",
+        "applicability": "applies"
+      }
+    ]
+  }
+}

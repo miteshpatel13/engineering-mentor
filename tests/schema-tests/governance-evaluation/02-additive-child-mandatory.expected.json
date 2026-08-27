@@ -1,0 +1,11 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-mandatory-prisma",
+      "classification": "additive",
+      "handling": "apply_both"
+    }
+  ],
+  "conflictCount": 0,
+  "prohibitedOverrideCount": 0
+}

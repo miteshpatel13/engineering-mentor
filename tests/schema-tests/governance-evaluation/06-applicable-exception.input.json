@@ -1,0 +1,33 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "exceptions": {
+    "valid": true,
+    "entries": [
+      {
+        "id": "exc-orm-choice",
+        "rule": "child-configurable-orm",
+        "scope": "reporting module",
+        "status": "approved",
+        "expiresAt": "2027-01-01"
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "assertions": {
+    "exceptions": [
+      {
+        "exceptionId": "exc-orm-choice",
+        "targetRuleTier": "child_configurable",
+        "targetRuleDescription": "raw SQL for reporting",
+        "applicability": "applies"
+      }
+    ]
+  }
+}

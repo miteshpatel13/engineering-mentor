@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-ambiguous.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-ambiguous",
+          "title": "child-ambiguous",
+          "classification": "mandatory",
+          "scope": "unclear scope",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-ambiguous",
+        "mentorRequirementTier": "mentor_mandatory",
+        "mentorRequirementDescription": "some requirement",
+        "applicability": "unknown",
+        "relationship": "unknown"
+      }
+    ]
+  }
+}

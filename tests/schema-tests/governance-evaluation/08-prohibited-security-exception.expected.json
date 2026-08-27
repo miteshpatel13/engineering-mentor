@@ -1,0 +1,10 @@
+{
+  "exceptionEvaluations": [
+    {
+      "exceptionId": "exc-skip-auth",
+      "classification": "prohibited_override",
+      "handling": "preserve_mentor_and_flag"
+    }
+  ],
+  "prohibitedOverrideCount": 1
+}

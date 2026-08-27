@@ -1,0 +1,11 @@
+{
+  "applicableRequirements": [
+    {
+      "ruleId": "child-advisory-formatting",
+      "classification": "compatible",
+      "handling": "apply_both"
+    }
+  ],
+  "conflictCount": 0,
+  "prohibitedOverrideCount": 0
+}

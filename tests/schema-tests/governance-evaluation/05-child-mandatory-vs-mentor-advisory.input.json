@@ -1,0 +1,38 @@
+{
+  "context": {
+    "mentorConfigured": true,
+    "projectProfile": {
+      "declared": true,
+      "valid": true
+    }
+  },
+  "rules": {
+    "valid": true,
+    "files": {
+      "child-mandatory-logformat.md": {
+        "valid": true,
+        "frontmatter": {
+          "id": "child-mandatory-logformat",
+          "title": "child-mandatory-logformat",
+          "classification": "mandatory",
+          "scope": "logging format",
+          "status": "active"
+        },
+        "errors": [],
+        "warnings": []
+      }
+    },
+    "directoryErrors": []
+  },
+  "assertions": {
+    "requirements": [
+      {
+        "ruleId": "child-mandatory-logformat",
+        "mentorRequirementTier": "mentor_advisory",
+        "mentorRequirementDescription": "prefer structured logging",
+        "applicability": "applies",
+        "relationship": "replaces"
+      }
+    ]
+  }
+}
