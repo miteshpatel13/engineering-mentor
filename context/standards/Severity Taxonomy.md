@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is the canonical severity vocabulary for every Engineering Mentor review-type Skill, Standard, SOP, and Template. Every review-type Skill (`code-review`, `security-review`, `performance-review`, `database-review`, `api-design`, `testing-review`) tags findings using these five levels and no others. Do not introduce a different severity vocabulary (e.g. "Major/Minor", "Blocker", "P0/P1/P2", "Required/Optional") into Mentor-level guidance — a child repository may keep its own convention internally, but the Mentor's own output is always expressed in these terms.
+This is the canonical severity vocabulary for every Engineering Mentor review-type Skill, Standard, SOP, and Template. Every review-type Skill (`code-review`, `security-review`, `performance-review`, `database-review`, `api-review`, `architecture-review`, `testing-review`) tags findings using these five levels and no others. Do not introduce a different severity vocabulary (e.g. "Major/Minor", "Blocker", "P0/P1/P2", "Required/Optional") into Mentor-level guidance — a child repository may keep its own convention internally, but the Mentor's own output is always expressed in these terms.
 
 ## Levels
 

@@ -1,0 +1,5 @@
+{
+  "valid": false,
+  "error_codes": ["E_HAPPY_PATH_ONLY"],
+  "warning_codes": ["W_FIXTURE_MISSING_CATEGORY"]
+}

@@ -1,0 +1,9 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_NAME_DIRECTORY_MISMATCH"
+  ],
+  "warning_codes": [
+    "W_RELATED_SKILL_NOT_FOUND"
+  ]
+}

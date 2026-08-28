@@ -1,6 +1,8 @@
 ---
 name: context-discovery
-description: Discover and normalize a child repository's declared Mentor context — .mentor/project.yaml, architecture.md, rules/, exceptions.yaml, plus a bounded, targeted check of well-known repository artifacts — into a Normalized Project Context that other Mentor Skills (code-review, security-review, architecture-review, database-review, testing-review, performance-review) can consume consistently. Use at the start of any Mentor Skill invocation against a real repository, before applying repository-sensitive guidance. Read-only: never creates, modifies, or deletes anything in the child repository. Does not enforce child rules or exceptions — discovery only.
+description: "Discover and normalize a child repository's declared Mentor context — .mentor/project.yaml, architecture.md, rules/, exceptions.yaml, plus a bounded, targeted check of well-known repository artifacts — into a Normalized Project Context that other Mentor Skills (code-review, security-review, architecture-review, database-review, testing-review, performance-review, api-review, api-contract-design) can consume consistently. Use at the start of any Mentor Skill invocation against a real repository, before applying repository-sensitive guidance. Read-only: never creates, modifies, or deletes anything in the child repository. Does not enforce child rules or exceptions — discovery only."
+category: Mentor Core
+skillType: Mentor Core
 ---
 
 # Context Discovery
@@ -108,6 +110,10 @@ Repository-artifact discovery (step 5) is existence-only. Do not open `package.j
 - Never invoke this Skill's logic by hand-parsing `.mentor/` files directly — always go through `scripts/discover_project_context.py` so validation and discovery-order logic stay in one place.
 - Never treat an unvalidated or invalid `project.yaml` field as trustworthy in a downstream recommendation.
 
+## Governance Integration
+
+Not applicable in the findings sense — this Skill supplies context to governance-consuming Skills; it does not itself evaluate a child repository's compliance, classify a rule/exception relationship, or produce a governance-classified finding. `discovery.childRules`/`discovery.exceptions` are surfaced as parsed data only (per Workflow); the tier/relationship classification a consuming Review-type Skill performs against that data is `scripts/evaluate_governance.py`'s job (`docs/Governance Evaluation.md`), not this Skill's.
+
 ## Validation
 
 Discovery is complete and correct when: every one of the four `.mentor/` files has been explicitly reported as found, missing, or invalid (never silently skipped); `project.yaml` validation was performed via the shared validator, not reimplemented; the Normalized Project Context was produced even when `.mentor/` is entirely absent; no repository content outside the fixed artifact candidate list and the four `.mentor/` files was read; and nothing in the child repository was modified. `scripts/run_context_discovery_tests.py` exercises all of this mechanically — see `tests/context-discovery/README.md`.
@@ -156,3 +162,7 @@ When reporting discovery results directly to a user (rather than handing the con
 - A repository with no `.mentor/` directory at all → `mentorConfigured: false`, every `.mentor/`-derived field `null`/empty, a warning stating child context is not configured — a consuming Skill proceeds exactly as it does today, using only what it inspects directly.
 - A repository with a `project.yaml` that fails schema validation (e.g. `schemaVersion: 99`) → `projectProfile.valid: false`, `discovery.filesInvalid` carries the specific error codes (e.g. `E_SCHEMA_VERSION_UNSUPPORTED`) — a consuming Skill must not treat any declared field from this file as trustworthy until it's fixed, and should say so if it surfaces any of those fields at all.
 - A repository declaring `mentor.version: ">=1.0.0 <2.0.0"` → `mentorCompatibility.rangeValid: true`, `mentorCompatibility.compatibilityStatus: "not_determined"` — never a computed "compatible"/"incompatible" verdict.
+
+## Related Skills
+
+- `skills/code-review/SKILL.md`, `skills/architecture-review/SKILL.md`, `skills/database-review/SKILL.md`, `skills/performance-review/SKILL.md`, `skills/security-review/SKILL.md`, `skills/testing-review/SKILL.md`, `skills/api-review/SKILL.md`, `skills/api-contract-design/SKILL.md` — Dependents: each of these Skills has a true Dependency on this Skill (invokes it first, every time, before reasoning about any repository-specific claim), not the reverse — this Skill has no dependency on any of them and functions identically regardless of which, if any, consumes its output.

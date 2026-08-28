@@ -1,0 +1,7 @@
+{
+  "valid": true,
+  "error_codes": [],
+  "warning_codes": [
+    "W_UNKNOWN_FRONTMATTER_FIELD"
+  ]
+}

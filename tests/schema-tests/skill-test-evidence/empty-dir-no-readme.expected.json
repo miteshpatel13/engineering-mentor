@@ -1,0 +1,5 @@
+{
+  "valid": false,
+  "error_codes": ["E_NO_EVIDENCE_README", "E_ZERO_FIXTURES"],
+  "warning_codes": []
+}

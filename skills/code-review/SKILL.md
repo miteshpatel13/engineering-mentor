@@ -1,6 +1,8 @@
 ---
 name: code-review
 description: Perform a production-grade review of a code change — a diff, pull request, or specific files — using the global Code Review Standard and canonical severity taxonomy, prioritizing correctness, security, and data integrity ahead of style. Use when reviewing a pull request, diff, or code change before merge. Refuses to fabricate a review when insufficient material is provided, and explicitly reconciles project constraints against security/correctness requirements rather than silently dropping either.
+category: Review
+skillType: Review
 ---
 
 # Code Review
@@ -14,6 +16,15 @@ Review a code change for correctness, security, data integrity, compatibility, p
 Applies to reviewing an actual code change: a diff, a pull request, a set of modified files, or an explicitly described API/contract change, in any language or stack, in a target repository whose own project-specific conventions and constraints inform this review but never outrank Mentor Mandatory governance. The standing, structural relationship between Mentor rules and a child repository's own declared rules is governed exclusively by `docs/Governance Precedence Model.md` — this Skill defers to it and does not define, or duplicate, a competing priority list. How a live, in-session explicit user instruction interacts with a Mentor Mandatory rule remains the separate, deliberately unresolved question that document's Section 15.3 identifies.
 
 Does not cover: architecture review of a design that hasn't been implemented yet (use `architecture-review`), a standalone security audit not tied to a specific change (use `security-review`), or judging whether a test suite is adequate independent of a specific code change (use `testing-review`) — use those Skills instead of, or alongside, this one.
+
+## When to Use
+
+Use when:
+- Reviewing a pull request, diff, or set of modified files before merging into a target repository.
+- Evaluating a code change for correctness, security, data integrity, compatibility, performance, reliability, maintainability, and test coverage.
+- Conducting a structured code review using the canonical severity taxonomy and blocking/non-blocking finding framework.
+
+Do not use for standalone architectural design reviews of unimplemented systems (use ), standalone security audits not tied to a specific code change (use ), or standalone test suite evaluations independent of a code change (use ).
 
 ## Required Context
 
@@ -132,6 +143,10 @@ This does not weaken genuine denial-of-service findings: when the material itsel
 - Stay within the target repository's actual conventions and stack; do not import a generic recommendation that doesn't fit the repository without inspecting it first (per the Mentor Operating Model).
 - Never let a discovered child rule's classification, or the mere existence of a child rule or exception, change a finding's severity. Severity is governed solely by `context/standards/Severity Taxonomy.md`, evidence-based exactly as before this phase; governance classification (Mandatory/Configurable/Advisory/Informational) and finding severity (CRITICAL/HIGH/MEDIUM/LOW/INFO) remain two independent axes (`docs/Governance Precedence Model.md` Section 12).
 
+## Governance Integration
+
+Review-type Skill: invokes  first (step 0) to obtain Normalized Project Context, and routes child-rule/exception tier and relationship classification through  (). Serves as the canonical reference implementation for Child Governance across all Review-type Skills in this ecosystem. Every finding is tagged with exactly one severity from . Relationships between Mentor requirements and child rules/exceptions are classified deterministically (, , , , , ). An attempted override or exception targeting a Mentor Mandatory requirement is always evaluated as a Prohibited Override per  Section 9, preserving the underlying finding in full. Governance classification and finding severity remain independent axes ( Section 12).
+
 ## Validation
 
 A review produced by this Skill is complete when: every finding has a canonical severity, a category, a location (or an explicit statement that location isn't determinable), a problem/impact/remediation; Blocking and Non-Blocking findings are clearly separated per the Severity Taxonomy's default blocking rule; the Verification section states what was and wasn't checked; no finding references code, a file, or a line that wasn't actually present in the reviewed material; every child-rule-derived finding carries its Rule/Classification/Scope metadata and every purely Mentor-derived finding carries none; and any Prohibited Override, true Conflict, or rule-applicability Insufficient-Evidence case encountered is reported under Governance Conflicts rather than silently resolved either way.
@@ -187,3 +202,12 @@ A review formatted per `context/templates/Review Template.md`:
 - A discovered `.mentor/exceptions.yaml` entry with `rule: authorization-required`, `status: approved`, and a scope covering the same `/admin/**` routes as a genuine missing-authorization finding → the CRITICAL finding is still reported in full under Blocking Findings; Verification notes that an approved exception exists for this rule/scope and that this Skill does not implement exception-aware suppression or downgrading — the exception is not treated as removing or softening the finding.
 - A discovered Child Advisory rule prefers integration tests over deep service-layer mocking (`docs/examples/child-rules/03-testing-requirements.md`); the reviewed diff's tests use deep Prisma-client mocking with no integration coverage → a single INFO/LOW-level Testing observation citing the child rule's preference is appropriate (Child Governance step 7); no exception is required for the reviewer to prefer the child's convention over generic Mentor Advisory testing guidance, and no Mentor Advisory "deviation" finding is manufactured on top of it.
 - A discovered child rule's `scope` reads "applies to the payment-processing module," and the reviewed material is a single utility function with no visible module path or caller context → applicability cannot be reliably determined; report this under Governance Conflicts as Insufficient Evidence (Child Governance step 1/5) rather than assuming the rule does or doesn't apply.
+
+
+## Related Skills
+
+-  — Related: evaluates architectural design and system boundaries prior to code implementation.
+-  — Related: evaluates deep security audit boundaries, vulnerability classes, and threat checklists.
+-  — Related: evaluates test suite coverage, test design, and test adequacy.
+-  — Related: evaluates database migrations, query efficiency, and schema constraints.
+-  — Related: invoked by step 0 of this Skill's workflow to discover repository context, rules, and exceptions.

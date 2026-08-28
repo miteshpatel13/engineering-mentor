@@ -1,6 +1,8 @@
 ---
 name: mentor-development
 description: Guidance for developing, maintaining, reviewing, and extending the Engineering Mentor repository itself — how to create and test Mentor Skills, develop Mentor Agents, maintain global context, avoid project-specific leakage, review changes, and follow versioning and governance rules. Use when creating or modifying a Skill, Agent, or standard in this repository, reviewing a proposed change to it, or deciding whether a piece of guidance belongs in the Mentor versus a child repository.
+category: Mentor Core
+skillType: Mentor Core
 ---
 
 # Mentor Development
@@ -11,9 +13,19 @@ The Engineering Mentor is a version-controlled, reusable engineering knowledge b
 
 ## Scope
 
-Applies when: creating or editing a Skill or Agent under `skills/` or `agents/`; adding or changing a standard, SOP, checklist, or template under `context/`; reviewing a change to this repository; deciding whether a piece of guidance is globally reusable or belongs in a specific child repository instead; or making a versioning/release decision for the Mentor.
+Applies to work on this repository itself: its Skills, Agents, standards, SOPs, checklists, and templates. Does not apply to work inside a child repository's own `.claude/skills/`, `.claude/agents/`, or `.claude/rules/` — those are project-specific and out of scope for this Skill.
 
-Does not apply to work inside a child repository's own `.claude/skills/`, `.claude/agents/`, or `.claude/rules/` — those are project-specific and out of scope for this Skill.
+## When to Use
+
+Use when: creating or editing a Skill or Agent under `skills/` or `agents/`; adding or changing a standard, SOP, checklist, or template under `context/`; reviewing a change to this repository; deciding whether a piece of guidance is globally reusable or belongs in a specific child repository instead; or making a versioning/release decision for the Mentor.
+
+## Required Context
+
+The file(s) or proposed change under review or being created; the relevant Development Standard and Template for the artifact type (`context/skills/Skill Development Standard.md` and `context/templates/Skill Template.md` for a Skill, `context/agents/Agent Development Standard.md` for an Agent); and, for a Skill specifically, `docs/Skill Standard.md`, `docs/Skill Taxonomy.md`, `docs/Skill Testing Standard.md`, and `docs/Skill Quality Standard.md`, which this Skill defers to rather than restating.
+
+## Workflow
+
+This Skill governs several distinct activities rather than one linear sequence — creating a Skill, testing a Skill, developing an Agent, maintaining global context, avoiding leakage, and reviewing a change each have their own steps, stated under their own heading below (How Mentor Skills Should Be Created gives the one genuinely ordered sequence, in Skill-creation specifically). State plainly which activity applies before proceeding, rather than forcing all of them through a single numbered flow that doesn't fit every case.
 
 ## Mentor vs Child Architecture
 
@@ -36,10 +48,11 @@ Never belongs in the Mentor: business logic for a specific application, project-
 3. Define its workflow, rules, and constraints.
 4. Define how its output is validated.
 5. Define edge cases and failure handling.
-6. Create realistic test scenarios before considering it done (see Testing, below).
-7. Ensure no project-specific assumptions leak into a global Skill (see Avoiding Leakage, below).
-8. Give it valid frontmatter: `name` must exactly match its directory name under `skills/<name>/SKILL.md` — this is what makes `/engineering-mentor:<name>` resolve — and `description` must state what the Skill does, when to use it, and what kind of engineering problem it addresses. A vague description ("perform a review") prevents Claude from selecting the right Skill.
-9. Follow `context/skills/Skill Development Standard.md` and `context/templates/Skill Template.md` for the full structure a production Skill should have.
+6. Before the Skill is considered ready for testing, cross-check its Rules against the applicable `context/standards/*.md` and `context/checklists/*.md` — every item a relevant standard/checklist names either has a corresponding Rule or the omission is a stated Scope decision, not a silent gap (`skills/skill-creator/SKILL.md` Workflow step 10 is the detailed version of this same gate).
+7. Create realistic test scenarios before considering it done (see Testing, below).
+8. Ensure no project-specific assumptions leak into a global Skill (see Avoiding Leakage, below).
+9. Give it valid frontmatter: `name` must exactly match its directory name under `skills/<name>/SKILL.md` — this is what makes `/engineering-mentor:<name>` resolve — and `description` must state what the Skill does, when to use it, and what kind of engineering problem it addresses. A vague description ("perform a review") prevents Claude from selecting the right Skill.
+10. Follow `context/skills/Skill Development Standard.md` and `context/templates/Skill Template.md` for the full structure a production Skill should have.
 
 ## How Mentor Skills Should Be Tested
 
@@ -73,6 +86,21 @@ The Mentor uses semantic versioning (`docs/Versioning Strategy.md`): MAJOR for b
 
 Keep global guidance reusable and technology-aware. Do not add project-specific business rules to global standards. When changing a global Skill, Standard, or SOP, consider backward compatibility and add regression coverage when practical. When a recurring engineering problem is discovered in a child repository, determine whether it is project-specific or globally applicable — globally applicable improvements belong in the Mentor and should include regression coverage when practical.
 
+## Rules
+
+The Mentor's substantive rules are stated where they're most concrete, above: what belongs in the Mentor vs. a child repository (Global vs Project-Specific Responsibilities), how to avoid leakage (How to Avoid Project-Specific Leakage), quality expectations (Quality Expectations), and versioning discipline (Versioning Expectations). This section exists so the canonical structure names a `## Rules` section explicitly; it does not restate that content, it points to it.
+
+## Constraints
+
+- Never invent child-repository facts (Mentor vs Child Architecture) — this applies to this Skill's own guidance as much as to any Skill it governs the creation of.
+- Never add project-specific business logic, a project-specific schema/API contract, or a technology assumption that isn't globally applicable to Mentor content (Global vs Project-Specific Responsibilities).
+- Never rewrite something simply because a different implementation would look cleaner — preserve working behavior unless a change is explicitly required (Quality Expectations).
+- Never ship a change that would silently break a pinned child repository's compatibility without an appropriate version bump (Versioning Expectations).
+
+## Governance Integration
+
+Not applicable — this Skill governs how the Mentor repository itself is built and changed; it does not evaluate a child repository's compliance or produce a governance-classified finding. The standing relationship between Mentor's own rules and a child repository's persisted rules/configuration is `docs/Governance Precedence Model.md`'s domain (Mentor vs Child Architecture, above), not this Skill's to redefine.
+
 ## Validation
 
 A change to this repository is ready when: the Skill, Agent, or standard follows the relevant Development Standard and Template; project-specific leakage has been checked and ruled out; for a Skill, realistic test scenarios exist or are planned under `tests/skill-tests/`; the change doesn't silently break the Mentor's contract with pinned child repositories without an appropriate version bump; and the plugin still validates cleanly (`claude plugin validate .` and `claude plugin validate . --strict`).
@@ -90,3 +118,13 @@ If it's unclear whether a piece of guidance belongs in the Mentor or a child rep
 ## Expected Output
 
 Depending on the request: a new or modified file under `skills/`, `agents/`, or `context/` that follows the standards above, or a structured review (scope, findings ranked by severity, and a recommendation) of a proposed change to this repository.
+
+## Examples
+
+**Positive example.** A contributor proposes a new Skill for reviewing rate-limiting configuration. Applying How Mentor Skills Should Be Created: purpose/scope are defined first, the Skill is checked against `docs/Skill Taxonomy.md` Section 5's overlap rules before drafting, and realistic test scenarios are planned under `tests/skill-tests/rate-limiting/` before the Skill is considered done.
+
+**Negative example (correctly declines).** A contributor proposes adding "how to configure our MongoDB connection pool size" as a new Mentor standard. Declined per How to Avoid Project-Specific Leakage: this depends on a specific database and a specific repository's operational parameters, not a generalizable principle — redirected to the child repository's own `.claude/rules/` instead, unless it can be restated as a technology-agnostic connection-pooling principle.
+
+## Related Skills
+
+- `skills/skill-creator/SKILL.md`, `skills/skill-tester/SKILL.md`, `skills/skill-reviewer/SKILL.md` — Related: those Skills implement, in full operational detail, what this Skill's How Mentor Skills Should Be Created / How Mentor Skills Should Be Tested sections summarize at a policy level; this Skill does not duplicate their step-by-step mechanism, and none of the four requires another's output to function independently.

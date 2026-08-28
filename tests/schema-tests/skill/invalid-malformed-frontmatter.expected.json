@@ -1,0 +1,7 @@
+{
+  "valid": false,
+  "error_codes": [
+    "E_MALFORMED_FRONTMATTER"
+  ],
+  "warning_codes": []
+}

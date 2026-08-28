@@ -1,6 +1,6 @@
 # code-review Skill — Regression Fixtures
 
-Ten permanent behavioral test scenarios for `skills/code-review/SKILL.md`, originating from the Skill Tester's independent evaluation (7 scenario passes, several hardening gaps identified) plus three additional scenarios added when the Skill was hardened.
+Ten permanent behavioral test scenarios for `skills/code-review/SKILL.md`, originating from the Skill Tester's independent evaluation (7 scenario passes, several hardening gaps identified) plus three additional scenarios added when the Skill was hardened. A 27th fixture was added in Phase 13 (Certification Blocker Remediation, part of the independent-certification-pilot follow-up work) to close a gap the Phase 12 pilot identified: fixtures 11-26 included a genuine Override scenario (24) but no genuine Conflict scenario (`docs/Governance Precedence Model.md` Section 10 category 4) — see fixture 27.
 
 ## What this is, and isn't
 
@@ -44,9 +44,12 @@ Re-run all ten fixtures whenever `skills/code-review/SKILL.md`, `context/standar
 | 24 | `24-child-advisory-overrides-mentor-advisory.md` | Governance: valid Child Advisory override of Mentor Advisory |
 | 25 | `25-unknown-applicability.md` | Governance: genuinely ambiguous (Unknown) applicability |
 | 26 | `26-mandatory-security-test-authorization-override.md` | Governance: mandatory security regression — authorization override |
+| 27 | `27-child-mandatory-conflicts-mentor-advisory.md` | Governance: genuine Conflict — Child Mandatory rule disagrees with Mentor Advisory guidance (Phase 13) |
 
 ## Governance Fixtures (11–26)
 
 Fixtures 11 through 26 were added for the First Enforcement Phase (code-review as the reference implementation of `docs/Governance Precedence Model.md`). They follow the same fixture convention as 1–10 above — narrative, LLM-judged, no automated assertion harness — with one addition: because `skills/code-review/SKILL.md`'s Workflow step 0 now runs `context-discovery` and, when declared, `scripts/validate_child_rule.py`/`scripts/validate_exceptions_yaml.py` before reviewing, each governance fixture's Input Material states the Normalized Project Context and parsed rule/exception data *as if those steps had already run*, rather than requiring the evaluating agent to actually execute the scripts. This keeps these fixtures consistent with the narrative, no-execution-harness convention already established for 1–10, while still exercising the Skill's actual governance-reasoning rules (Child Governance, Progressive Context Loading, Output Format for Child-Derived Findings) against realistic discovery/validator output shapes.
 
-Re-run fixtures 11–26 whenever `skills/code-review/SKILL.md`'s Child Governance rules, `docs/Governance Precedence Model.md`, or `docs/Child Rules and Exceptions.md` changes, in addition to the existing re-run triggers above.
+Re-run fixtures 11–27 whenever `skills/code-review/SKILL.md`'s Child Governance rules, `docs/Governance Precedence Model.md`, or `docs/Child Rules and Exceptions.md` changes, in addition to the existing re-run triggers above.
+
+Note: this Phase 13 addition is scoped narrowly to the reference governance-fixture model per `docs/Skill Testing Standard.md` Section 2 (now updated to explicitly name Override and Conflict as required categories). It does not address `skills/code-review/SKILL.md`'s separate, pre-existing structural validity issue (missing `category`/`skillType` frontmatter fields and missing `## When to Use`/`## Governance Integration` sections, per `scripts/validate_skill.py`), which remains out of scope for this phase.
