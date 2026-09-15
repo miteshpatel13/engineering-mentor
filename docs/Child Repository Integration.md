@@ -8,7 +8,7 @@ This Contract formalizes and extends the relationship already established in `co
 
 ## 2. Scope
 
-Applies to: any child repository that installs the `engineering-mentor` Claude Code plugin and wants Mentor Skills, Agents, standards, and SOPs to operate with awareness of that repository's actual stack, architecture, and constraints.
+Applies to: any child repository that installs the `engineering-mentor` plugin (via Google Antigravity or Claude Code) and wants Mentor Skills, Agents, standards, and SOPs to operate with awareness of that repository's actual stack, architecture, and constraints.
 
 Does not apply to: development *of* the Mentor plugin itself (that is `skills/mentor-development/SKILL.md`'s scope), and does not define or create any child-side files — per this task's constraints, no `.mentor/` directory is created in this repository. Everything under "Child Repository Contract" (Section 9) below is a specification for what a child repository should contain, not something implemented here.
 
@@ -197,7 +197,7 @@ Engineering Mentor uses semantic versioning, as already established in `docs/Ver
 - **MINOR** — new backward-compatible Skills, standards, capabilities, or guidance.
 - **MAJOR** — breaking behavioral/governance changes that may require child-project changes.
 
-A change that would silently break a pinned child (e.g. reclassifying an Advisory rule as Mandatory, or changing a Skill's expected output structure) requires at least a MAJOR bump, per the existing Versioning Expectations. The current Mentor plugin version is `1.0.0` (`.claude-plugin/plugin.json`).
+A change that would silently break a pinned child (e.g. reclassifying an Advisory rule as Mandatory, or changing a Skill's expected output structure) requires at least a MAJOR bump, per the existing Versioning Expectations. The current Mentor plugin version is `1.0.0` (`plugin.json` and `.claude-plugin/plugin.json`).
 
 ## 15. Compatibility
 

@@ -9,7 +9,7 @@ skillType: Mentor Core
 
 ## Purpose
 
-The Engineering Mentor is a version-controlled, reusable engineering knowledge base and capability set, distributed as a Claude Code plugin, that provides senior-level, production-grade engineering guidance — principles, standards, SOPs, Skills, Agents, checklists, and templates — to any number of independent child repositories. This Skill governs how the Mentor itself should be built, changed, and kept trustworthy over time. It applies to work *on* this repository, not work performed *by* it inside a child repository.
+The Engineering Mentor is a version-controlled, reusable engineering knowledge base and capability set, compatible with both Google Antigravity and Claude Code, that provides senior-level, production-grade engineering guidance — principles, standards, SOPs, Skills, Agents, checklists, and templates — to any number of independent child repositories. This Skill governs how the Mentor itself should be built, changed, and kept trustworthy over time. It applies to work *on* this repository, not work performed *by* it inside a child repository.
 
 ## Scope
 
@@ -103,7 +103,7 @@ Not applicable — this Skill governs how the Mentor repository itself is built 
 
 ## Validation
 
-A change to this repository is ready when: the Skill, Agent, or standard follows the relevant Development Standard and Template; project-specific leakage has been checked and ruled out; for a Skill, realistic test scenarios exist or are planned under `tests/skill-tests/`; the change doesn't silently break the Mentor's contract with pinned child repositories without an appropriate version bump; and the plugin still validates cleanly (`claude plugin validate .` and `claude plugin validate . --strict`).
+A change to this repository is ready when: the Skill, Agent, or standard follows the relevant Development Standard and Template; project-specific leakage has been checked and ruled out; for a Skill, realistic test scenarios exist or are planned under `tests/skill-tests/`; the change doesn't silently break the Mentor's contract with pinned child repositories without an appropriate version bump; and the plugin still validates cleanly (`python3 scripts/validate_antigravity.py`, `claude plugin validate .`, and `claude plugin validate . --strict`).
 
 ## Edge Cases
 
