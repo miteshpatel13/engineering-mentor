@@ -47,6 +47,7 @@ Use the specialized Engineering Mentor skills on demand for specific workflows:
 - Security Review: `security-review`
 - Database Review: `database-review`
 - API Design & Contract: `api-contract-design`, `api-review`, `swagger-openapi`
+- External Integrations: `third-party-integration`, `payment-integration`, `notification-integration`, `file-storage`
 - Data Integrity & Patterns: `idempotency`, `uuid-strategy`, `soft-delete`, `validation`, `database-indexing`
 - Testing & Performance: `testing-review`, `performance-review`, `jmeter-performance-testing`
 - Requirements & Context: `requirements-discipline`, `context-discovery`
