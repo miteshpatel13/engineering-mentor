@@ -1,7 +1,7 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "engineering-mentor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Global engineering standards, Skills, Agents, SOPs, and development guidance for production software repositories.",
   "author": {
     "name": "Mitesh"
