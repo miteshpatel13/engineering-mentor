@@ -197,7 +197,7 @@ Engineering Mentor uses semantic versioning, as already established in `docs/Ver
 - **MINOR** — new backward-compatible Skills, standards, capabilities, or guidance.
 - **MAJOR** — breaking behavioral/governance changes that may require child-project changes.
 
-A change that would silently break a pinned child (e.g. reclassifying an Advisory rule as Mandatory, or changing a Skill's expected output structure) requires at least a MAJOR bump, per the existing Versioning Expectations. The current Mentor plugin version is `1.0.0` (`plugin.json` and `.claude-plugin/plugin.json`).
+A change that would silently break a pinned child (e.g. reclassifying an Advisory rule as Mandatory, or changing a Skill's expected output structure) requires at least a MAJOR bump, per the existing Versioning Expectations. The current Mentor plugin version is `2.0.0` (`plugin.json` and `.claude-plugin/plugin.json`).
 
 ## 15. Compatibility
 

@@ -7,6 +7,8 @@ skillType: Mentor Core
 
 # Skill Creator
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a new Mentor Skill that is structurally complete (`docs/Skill Standard.md`), correctly classified (`docs/Skill Taxonomy.md`), free of project-specific leakage, and ready to enter the Draft stage of the Skill lifecycle with a real chance of reaching Certified. This Skill exists separately from `skill-tester` and `skill-reviewer` because creation, testing, and review are three distinct responsibilities that must not collapse into one undifferentiated "make a good Skill" instruction — this Skill owns **how to create**; it does not own how to test (`skills/skill-tester/SKILL.md`) or how to review (`skills/skill-reviewer/SKILL.md`), and does not repeat their content here beyond the minimum handoff each needs.

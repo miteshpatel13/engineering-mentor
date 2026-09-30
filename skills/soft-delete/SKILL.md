@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Soft Delete
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for logical (soft) deletion — retaining a "deleted" record rather than physically removing it, for history, audit, referential integrity, or possible restoration — as distinct from physical (hard) deletion and from several adjacent lifecycle concepts that are easy to conflate with it. This exists as its own Skill because `database-review` (schema/query correctness) and `security-review` (whether authorization still applies to a soft-deleted record) both touch pieces of this pattern in their own Rules without teaching the pattern itself, following `docs/Skill Taxonomy.md` Section 2's composition model.

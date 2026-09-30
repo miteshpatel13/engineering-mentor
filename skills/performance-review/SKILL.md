@@ -7,6 +7,8 @@ skillType: Review
 
 # Performance Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce an evidence-based diagnosis of a performance problem, or a structured review of a proposed performance optimization, that is grounded in measurement rather than assumption. This Skill exists separately from `skills/database-review/SKILL.md` and `skills/architecture-review/SKILL.md` because those Skills identify *structurally* risky patterns (an N+1 query shape, a scaling ceiling in a design) without measuring anything; this Skill's job starts where a structural risk becomes, or is claimed to become, an actual measured problem — and it insists on a measurable target and post-change verification precisely because "this should be faster" claims, made without measurement, are a common source of wasted optimization effort and regressions elsewhere.

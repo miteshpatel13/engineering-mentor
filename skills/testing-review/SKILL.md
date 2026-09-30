@@ -7,6 +7,8 @@ skillType: Review
 
 # Testing Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a structured review of whether a test suite actually protects the behavior it claims to, rather than merely achieving a line-coverage number. This Skill exists separately from `skills/code-review/SKILL.md` because a test suite can be extensive, pass consistently, and still fail to protect against the regressions that matter — a suite testing only the happy path, over-coupled to implementation detail, or silent on authorization and concurrency has a coverage number that overstates its actual protection.

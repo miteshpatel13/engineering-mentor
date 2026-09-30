@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Notification Integration
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for notification and messaging architectures across multi-channel systems (Email, SMS, WhatsApp, Push Notifications). This exists as its own Skill because notification integration requires strict provider adapter isolation (`architecture-review`), asynchronous queued dispatch, dynamic audience resolution, template pre-approval management, user preference/opt-out compliance (`security-review`), and multi-state delivery tracking.
@@ -86,7 +88,7 @@ Large-scale broadcast notifications must be offloaded to background job queues o
 
 This Skill supplies reference material (Domain Pattern) per `docs/Skill Taxonomy.md` Section 2.
 
-- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier standards for system architecture and security grounded in `context/standards/Architecture Standards.md` and `context/standards/Security Standards.md`.
+- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier standards for system architecture and security grounded in `context/core/Architecture Principles.md` and `context/standards/Security Standards.md`.
 - **Child Rules:** Projects may define specific messaging providers, default channels, or locale templates in `.mentor/rules/`.
 
 ## Validation

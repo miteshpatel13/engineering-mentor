@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # Swagger / OpenAPI Documentation
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable workflow guidance for authoring, maintaining, and validating OpenAPI/Swagger documentation for RESTful web APIs. This exists as an Authoring/Workflow Skill because API documentation is an integral part of API contract design (`api-contract-design`) — requiring code-first spec generation, explicit HTTP status code schemas, enum value documentation, and atomic synchronization between application code and published specs.
@@ -82,7 +84,7 @@ A field's optionality in OpenAPI documentation must match its DTO validation rul
 
 This Skill provides workflow guidance for API documentation per `docs/Skill Taxonomy.md` Section 2.
 
-- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier workflow practices grounded in `context/standards/API & Backend Standards.md` and `context/standards/Documentation Standards.md`.
+- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier workflow practices grounded in `context/standards/API & Backend Standards.md` and `skills/documentation/SKILL.md`.
 - **Child Rules:** Projects may define specific OpenAPI route paths (e.g. `/api/docs`), title metadata, or decorator libraries in `.mentor/rules/`.
 
 ## Validation

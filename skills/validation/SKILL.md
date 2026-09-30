@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Validation
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for backend validation architecture. This exists as its own Skill because validation is a multi-layer concern: structural input shape must be validated at the API/DTO boundary (`api-contract-design`), domain business rules and cross-field constraints must be validated at the service layer, and sensitive security/financial inputs must be server-authoritative (`security-review`). This Skill establishes the boundary between these layers.

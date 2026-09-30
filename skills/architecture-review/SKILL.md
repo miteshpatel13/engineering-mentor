@@ -7,6 +7,8 @@ skillType: Review
 
 # Architecture Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a structured, evidence-based review of a system or component design — a proposed change, an existing subsystem, or a design document (ADR, RFC, diagram) — against durable architecture principles that hold regardless of stack: boundaries, coupling, cohesion, data ownership, and failure modes. This Skill exists separately from `skills/code-review/SKILL.md` because architecture review evaluates structural decisions above the level of an individual diff — a change can be free of code-level defects and still introduce a structural risk (a new circular dependency, a shared-write data-ownership violation, a single point of failure) that only becomes visible when the design is considered as a whole.

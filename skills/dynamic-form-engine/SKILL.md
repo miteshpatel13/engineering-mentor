@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Dynamic Form Engine
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for dynamic, metadata-driven form engines. This exists as its own Skill because dynamic form engines represent a platform architecture (`architecture-review`) spanning versioned form definitions, extensible field type registries, client and server-side conditional rule evaluation (`validation`), and hybrid data persistence (`database-review`).
@@ -77,7 +79,7 @@ Dynamic submission values must be stored using a hybrid model:
 
 This Skill supplies reference material (Domain Pattern) per `docs/Skill Taxonomy.md` Section 2.
 
-- **Mentor Advisory:** Rules in this Skill represent Advisory-tier standards for system architecture and data modeling grounded in `context/standards/Architecture Standards.md` and `context/standards/Database Standards.md`.
+- **Mentor Advisory:** Rules in this Skill represent Advisory-tier standards for system architecture and data modeling grounded in `context/core/Architecture Principles.md` and `context/standards/Database Standards.md`.
 - **Child Rules:** Projects may specify supported rule operators (e.g. `EQUALS`, `IN`, `GREATER_THAN`) or storage models in `.mentor/rules/`.
 
 ## Validation

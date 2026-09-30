@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # File Storage
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for file storage and asset management backend architectures. This exists as its own Skill because file storage spans security (`security-review`), architecture provider abstraction (`architecture-review`), and data integrity — requiring server-side key generation, content-sniffed MIME validation, size caps, and strict public vs private access control.
@@ -80,7 +82,7 @@ Soft-deleting a domain entity or file record must not trigger an immediate, sync
 
 This Skill supplies reference material (Domain Pattern) per `docs/Skill Taxonomy.md` Section 2.
 
-- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier standards for system security and storage architecture grounded in `context/standards/Security Standards.md` and `context/standards/Architecture Standards.md`.
+- **Mentor Advisory:** Rules in this Skill represent strongly recommended Advisory-tier standards for system security and storage architecture grounded in `context/standards/Security Standards.md` and `context/core/Architecture Principles.md`.
 - **Child Rules:** Child rules in `.mentor/rules/` may specify allowed file extensions, maximum file size limits, or primary cloud storage providers.
 
 ## Validation

@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Payment Integration
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for integrating third-party payment gateways (e.g., Stripe, PayPal, PayU) into backend application architectures. This exists as its own Skill because payment integration carries critical financial, security, and data-integrity requirements — requiring server-side amount recalculation, strict webhook deduplication (`skills/idempotency/SKILL.md`), provider abstraction, refund validation, and invoice snapshotting.

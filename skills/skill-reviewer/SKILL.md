@@ -7,6 +7,8 @@ skillType: Mentor Core
 
 # Skill Reviewer
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a scored, actionable review of a Skill — using `docs/Skill Quality Standard.md`'s ten dimensions, not a generic checklist — that either clears the Skill for certification (`docs/Skill Taxonomy.md` Section 7, stage 5) or names precisely what stands between it and certification. This Skill owns **how to review**; it assumes `skills/skill-creator/SKILL.md` has already produced a structurally complete draft and `skills/skill-tester/SKILL.md` has already produced fixture evidence — it does not draft content and does not design fixtures.

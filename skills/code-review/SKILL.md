@@ -7,6 +7,8 @@ skillType: Review
 
 # Code Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Review a code change for correctness, security, data integrity, compatibility, performance, reliability, maintainability, and test coverage, and report findings in a consistent, severity-tagged, blocking/non-blocking structure that a maintainer can act on directly.

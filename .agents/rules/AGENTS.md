@@ -31,4 +31,6 @@ python3 scripts/run_rules_and_exceptions_tests.py
 python3 scripts/run_governance_evaluation_tests.py
 python3 scripts/run_skill_test_evidence_tests.py
 python3 scripts/validate_antigravity.py
+python3 scripts/validate_claude_plugin.py
+python3 scripts/run_claude_plugin_tests.py
 ```
