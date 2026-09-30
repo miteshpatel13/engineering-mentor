@@ -7,6 +7,8 @@ skillType: Review
 
 # Security Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a structured, evidence-based security review of a change, endpoint, or component — trust boundaries, authentication, authorization, input validation, injection classes, secrets handling, and abuse scenarios — grounded in what the material actually shows rather than a generic vulnerability checklist applied without evidence. This Skill exists separately from `skills/code-review/SKILL.md` because security defects have a distinct failure mode (silent until exploited, often invisible without adversarial thinking about how a boundary could be crossed) that warrants a dedicated, systematically-applied review rather than being one concern among many in a general review pass.

@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # Documentation
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Documentation that describes the original plan instead of what was actually built is worse than no documentation — it actively misleads a reader who trusts it. This Skill generalizes a project's documentation-labeling discipline (`technical-documentation`, in the audited `mentor-skills-source` collection) into reusable Mentor content: every project-specific area list and domain reference has been stripped out, keeping the labeling scheme, the verify-against-code rule, and the update-in-the-same-change discipline that made the source material trustworthy. This Skill is deliberately broad — general documentation discipline, not an API-only or OpenAPI-specific one; OpenAPI/Swagger-specific contract depth belongs to a future `api-contract-design` Skill, not here.

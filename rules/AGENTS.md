@@ -48,6 +48,7 @@ Use the specialized Engineering Mentor skills on demand for specific workflows:
 - Database Review: `database-review`
 - API Design & Contract: `api-contract-design`, `api-review`, `swagger-openapi`
 - External Integrations: `third-party-integration`, `payment-integration`, `notification-integration`, `file-storage`
+- Workflow & Codebase Context: `spec-driven-development` (routes work to GitHub Spec Kit phases and Mentor gates), `implementation-plan-review` (plan gate after `/speckit-plan`), `codebase-orientation` (change footprint, using Graft when the project has it)
 - Data Integrity & Patterns: `idempotency`, `uuid-strategy`, `soft-delete`, `validation`, `database-indexing`
 - Testing & Performance: `testing-review`, `performance-review`, `jmeter-performance-testing`
 - Requirements & Context: `requirements-discipline`, `context-discovery`

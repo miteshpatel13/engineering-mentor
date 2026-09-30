@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # JMeter Performance Testing
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable workflow guidance for designing, executing, and reporting load and performance tests using Apache JMeter (or compatible performance testing engines). This exists as an Authoring/Workflow Skill because performance testing is tightly coupled to performance evaluation (`performance-review`) — requiring workflow-based scenario design, correlation of dynamic session variables, realistic dataset parameterization, structured load profiling (ramp-up, sustained, stress), and tail-latency reporting (P90, P95, P99).

@@ -7,6 +7,8 @@ skillType: Review
 
 # API Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a structured, evidence-based review of an existing or already-drafted API contract — endpoint behavior, request/response schemas, validation, error semantics, versioning, and backward compatibility — against the target repository's own established conventions. This Skill exists separately from `skills/api-contract-design/SKILL.md` because reviewing a contract that already exists (or already has a concrete draft) is evaluation against evidence, not the open-ended structural decision-making `api-contract-design` owns; splitting the two keeps this Skill's output a scored, evidence-based review rather than a mix of critique and fresh design recommendation. (This split follows `docs/Skill Ecosystem Inventory.md`'s own recorded finding that the original combined `api-design` Skill mixed two distinct responsibilities under one name.)

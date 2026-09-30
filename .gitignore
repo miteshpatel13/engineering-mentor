@@ -21,3 +21,6 @@ temp/
 # Python (schema validator scripts)
 __pycache__/
 *.pyc
+
+# Claude Code plugin eval output (claude plugin eval)
+evals/results/

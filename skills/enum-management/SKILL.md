@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Enum Management
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for managing enums (enumerated domain types) across database storage, application logic, and external API contracts. This exists as its own Skill because enum management spans schema design (`database-review`), input validation (`validation`), and API serialization (`api-contract-design`) — requiring consistent rules for value assignment, immutability of persisted values, and boundary conversions.

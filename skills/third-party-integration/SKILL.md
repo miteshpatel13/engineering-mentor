@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # Third-Party Integration
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Provide an authoritative, end-to-end engineering discipline for integrating external systems, third-party software, and external services into any software architecture. External integrations are inherently cross-boundary operations that introduce external failure modes, latency, security vulnerabilities, schema volatility, and data inconsistency into a codebase. This Skill guides an engineering agent or practitioner through the complete integration lifecycle—from initial capability discovery and pattern selection, to adapter-isolated implementation, strict boundary validation, security hardening, rate limiting, retry/timeout controls, idempotency, testing, and operational runbooks. It ensures external dependencies remain well-isolated behind Anti-Corruption Layers (ACL) rather than leaking third-party assumptions into the core business domain.
@@ -298,7 +300,7 @@ Implement the integration using dedicated classes/modules:
 Application business logic and domain services must never directly import or invoke third-party SDKs, HTTP clients, or vendor-specific data structures. All interactions must pass through a domain-owned interface (Port) implemented by an Adapter. Third-party entities must be translated into internal domain models at the boundary.
 
 ### Secret Management & Zero Hardcoding
-*(Mentor Mandatory baseline via `context/standards/Security Standard.md`)*
+*(Mentor Mandatory baseline via `context/standards/Security Standards.md`)*
 API keys, client secrets, private keys, webhook signing secrets, and basic authentication passwords must never be committed to source code or configuration files. They must be injected at runtime via environment variables or fetched from an approved secrets manager. Any PR containing hardcoded credentials must be blocked with CRITICAL severity.
 
 ### Asynchronous Ingestion of Webhooks
@@ -363,7 +365,7 @@ Outbound synchronous integration calls executed within user-facing request paths
 
 Authoring/Workflow-type Skill, invoked during system design, implementation, and code review:
 - Invokes `skills/context-discovery/SKILL.md` to discover repository stack, queue infrastructure, and declared child governance.
-- Strictly adheres to Mentor Mandatory baselines established in `context/standards/Security Standard.md` (zero hardcoded secrets, authentication/authorization checks, PII protection) and `skills/idempotency/SKILL.md` (constraint-backed deduplication).
+- Strictly adheres to Mentor Mandatory baselines established in `context/standards/Security Standards.md` (zero hardcoded secrets, authentication/authorization checks, PII protection) and `skills/idempotency/SKILL.md` (constraint-backed deduplication).
 - When conducting reviews of existing third-party integrations, maps findings strictly to `context/standards/Severity Taxonomy.md` (CRITICAL for exposed credentials or unverified webhooks; HIGH for missing timeouts, unbounded retries, or duplicate transaction vulnerabilities; MEDIUM for missing circuit breakers or incomplete error mapping).
 - Evaluates child repository exceptions through `scripts/evaluate_governance.py` when evaluating project compliance.
 

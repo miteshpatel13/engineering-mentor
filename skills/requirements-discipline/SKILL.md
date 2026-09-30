@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # Requirements Discipline
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Requirements material — an SRS, a ticket, a stakeholder conversation, an existing codebase's implied behavior — is almost never fully explicit. Left unmanaged, the gaps get filled silently during implementation, and a reader six months later can no longer tell what the client actually asked for versus what an engineer decided seemed reasonable at the time. This Skill exists to make that distinction permanent, visible, and traceable, generalized from a real project's SRS-scope discipline (`srs-scope-rules`, in the audited `mentor-skills-source` collection) with every project-specific fact — the originating domain, its schema, its client decisions — stripped out, keeping only the reusable labeling and escalation discipline.

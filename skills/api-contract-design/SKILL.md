@@ -7,6 +7,8 @@ skillType: Authoring/Workflow
 
 # API Contract Design
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a concrete, well-reasoned API contract design — resource shape, endpoint set, request/response schemas, validation rules, versioning approach, and error semantics — from a stated requirement, before implementation begins. This Skill exists separately from `skills/api-review/SKILL.md` because designing a contract from an open requirement is a generative, decision-making task with genuine trade-offs to weigh (resource modeling choices, versioning strategy, pagination approach), not an evaluation of something that already exists; collapsing the two under one name previously produced a Skill that mixed authoring and critique in a way neither did well (`docs/Skill Ecosystem Inventory.md`'s recorded finding on the original combined `api-design` Skill).

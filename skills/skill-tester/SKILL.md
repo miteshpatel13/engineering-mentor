@@ -7,6 +7,8 @@ skillType: Mentor Core
 
 # Skill Tester
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce test evidence for a Skill that is honest about what it does and doesn't prove, sufficient to satisfy `docs/Skill Testing Standard.md`'s minimum fixture bar, and organized so `skills/skill-reviewer/SKILL.md` can score the Test Coverage dimension against real fixtures rather than a claim. This Skill owns **how to test**; it does not own how to create a Skill's content (`skills/skill-creator/SKILL.md`) or how to score/certify it (`skills/skill-reviewer/SKILL.md`).

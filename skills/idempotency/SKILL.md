@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # Idempotency
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for making an operation idempotent — safe to execute more than once with the same effect and observable result as executing it once. This exists as its own Skill because idempotency is a cross-cutting design concern that `database-review` (data-integrity/race-condition angle) and `api-review` (contract/retry-safety angle) both currently assume as background knowledge in their own Rules rather than teach — neither owns "how to design idempotency correctly," only "does this specific implementation have it." This Skill is the reference material both point to, following `docs/Skill Taxonomy.md` Section 2's composition model (a Domain Pattern Skill supplies the pattern; a Review Skill checks for it in real code).

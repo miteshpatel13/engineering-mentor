@@ -7,6 +7,8 @@ skillType: Domain Pattern
 
 # UUID Strategy
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce the shared, reusable reference pattern for identifier strategy — the common split between an internal identifier (optimized for storage, joins, and performance) and a public/external identifier (optimized for opacity and non-enumerability), when each is actually warranted, and how resolution between them should be handled end-to-end. This exists as its own Skill because `database-review`, `api-review`, and `security-review` each touch one piece of this decision (indexing, contract shape, authorization) without teaching the identifier-strategy decision itself, following `docs/Skill Taxonomy.md` Section 2's composition model.

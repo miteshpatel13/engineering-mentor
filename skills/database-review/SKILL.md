@@ -7,6 +7,8 @@ skillType: Review
 
 # Database Review
 
+> **Resource paths:** Mentor file paths in this Skill (`context/…`, `docs/…`, `scripts/…`, `skills/…`, `tests/…`) are relative to the Engineering Mentor root, not the repository being worked on; `.mentor/…` paths refer to the target repository. In Claude Code the Mentor root is `${CLAUDE_PLUGIN_ROOT}` — read and run Mentor files from there.
+
 ## Purpose
 
 Produce a structured, evidence-based review of a database schema change, migration, or query/ORM pattern for correctness, data-integrity risk, and production safety. This Skill exists separately from `skills/code-review/SKILL.md` because database changes carry a distinct risk profile — a syntactically clean migration can still corrupt data, deadlock under concurrent load, or silently drop a constraint that was load-bearing for application correctness — that requires reasoning about the schema and data over time, not just the diff in isolation.
