@@ -1,7 +1,7 @@
 {
     "name": "engineering-mentor",
     "description": "Production-grade engineering standards, reusable skills, specialized agents, SOPs, security practices, testing guidance, architecture guidance, and development governance.",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "author": {
         "name": "Mitesh Patel"
     },

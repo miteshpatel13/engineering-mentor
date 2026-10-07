@@ -1,7 +1,7 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "engineering-mentor",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Production-grade engineering standards, reusable skills, specialized agents, SOPs, security practices, testing guidance, architecture guidance, and development governance.",
   "author": {
     "name": "Mitesh Patel"
