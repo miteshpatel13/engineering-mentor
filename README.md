@@ -78,7 +78,7 @@ The Mentor must never invent facts about a child repository — it inspects the 
 | **Codebase Intelligence** | [Graft](docs/integrations/graft.md), consumed through `codebase-orientation` |
 | **Architecture Review** | `architecture-review`, `implementation-plan-review` |
 | **Security** | `security-review`, Security Standards and Checklist |
-| **Performance** | `performance-review`, `jmeter-performance-testing` |
+| **Performance** | `performance-review`, `jmeter-performance-testing`, `algorithm-complexity` |
 | **Testing** | `testing-review`, Testing Standards |
 | **Database** | `database-review`, `database-indexing`, `soft-delete`, `uuid-strategy`, `idempotency` |
 | **API Design** | `api-contract-design`, `api-review`, `swagger-openapi` |
@@ -353,7 +353,7 @@ python3 scripts/run_skill_test_evidence_tests.py
 
 ## Skills Catalog
 
-All 31 skills are repository-independent and available across both platforms (in Claude Code, prefix each with `engineering-mentor:`):
+All 32 skills are repository-independent and available across both platforms (in Claude Code, prefix each with `engineering-mentor:`):
 
 | Skill | Category | Description |
 |---|---|---|
@@ -381,6 +381,7 @@ All 31 skills are repository-independent and available across both platforms (in
 | `requirements-discipline` | Process | Clarify ambiguous specifications, resolve open points, and structure user stories. |
 | `context-discovery` | Governance | Discover and evaluate child repository `.mentor/` configuration and conventions. |
 | `jmeter-performance-testing`| Testing | Author and validate JMeter performance test scripts and load testing plans. |
+| `algorithm-complexity` | Performance | Analyze, review, and optimize time and space complexity, loops, recursion, and Big-O trade-offs. |
 | `skill-creator` | Meta | Author new production-grade Mentor skills conforming to standard taxonomy. |
 | `skill-tester` | Meta | Create adversarial and edge-case test fixtures for skill evaluation. |
 | `skill-reviewer` | Meta | Review existing skills against quality, ambiguity, and taxonomy standards. |
