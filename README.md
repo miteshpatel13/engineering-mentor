@@ -435,4 +435,4 @@ Engineering Mentor uses semantic versioning for releases:
 - **MINOR** — backward-compatible new Skills, standards, SOPs, or capabilities.
 - **PATCH** — clarifications, corrections, and non-breaking improvements.
 
-Child repositories should pin or intentionally select a Mentor version rather than silently receiving uncontrolled breaking changes. See `docs/Versioning Strategy.md` for details. The current manifest version is `2.0.0`; `.claude-plugin/plugin.json` and the Antigravity `plugin.json` must always carry the same version (enforced by `scripts/validate_claude_plugin.py`). Claude Code users receive a release only when this version changes, so bump it on every release.
+Child repositories should pin or intentionally select a Mentor version rather than silently receiving uncontrolled breaking changes. See `docs/Versioning Strategy.md` for details. The current manifest version is `2.1.0`; `.claude-plugin/plugin.json` and the Antigravity `plugin.json` must always carry the same version (enforced by `scripts/validate_claude_plugin.py`). Claude Code users receive a release only when this version changes, so bump it on every release.
