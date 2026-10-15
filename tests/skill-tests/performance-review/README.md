@@ -1,6 +1,6 @@
 # performance-review Skill — Regression Fixtures
 
-13 permanent behavioral test scenarios for `skills/performance-review/SKILL.md`. Fixtures 1-5 cover the normal/edge/adversarial/failure/governance-sensitive categories from the original retrofit phase. Fixtures 6 onward were added in Phase 11 (Review Skill Governance Evidence) to close a gap Phase 10 identified: the single governance-sensitive fixture (5) exercised only one governance relationship (a Prohibited Override), while `docs/Skill Testing Standard.md` Section 2's second paragraph requires the full governance-relationship series for any Review-type Skill. See "Governance-Relationship Coverage" below for the mapping.
+14 permanent behavioral test scenarios for `skills/performance-review/SKILL.md`. Fixtures 1-5 cover the normal/edge/adversarial/failure/governance-sensitive categories from the original retrofit phase. Fixtures 6 onward were added in Phase 11 (Review Skill Governance Evidence) to close a gap Phase 10 identified: the single governance-sensitive fixture (5) exercised only one governance relationship (a Prohibited Override), while `docs/Skill Testing Standard.md` Section 2's second paragraph requires the full governance-relationship series for any Review-type Skill. See "Governance-Relationship Coverage" below for the mapping.
 
 ## What this is, and isn't
 
@@ -27,6 +27,7 @@ Re-run all fixtures whenever `skills/performance-review/SKILL.md` changes; re-ru
 | 11 | `11-governance-applicable-exception-advisory-deviation.md` | Governance-sensitive — an approved, scoped, unexpired exception legitimately deviating from Advisory guidance |
 | 12 | `12-governance-expired-exception-no-benefit.md` | Governance-sensitive — an expired exception provides no protection from a Mandatory finding |
 | 13 | `13-governance-severity-independent-of-classification.md` | Governance-sensitive — classification and severity stay independent axes |
+| 14 | `14-rule-coverage-stall-signature-not-slow-query.md` | Rule coverage — Stall Signatures Point at Shared Resources; External Calls Bound the Request |
 
 ## Governance-Relationship Coverage (Phase 11)
 

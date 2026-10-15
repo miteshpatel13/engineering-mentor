@@ -64,6 +64,10 @@ Flag a pattern (typically ORM lazy-loading in a loop, or a per-row follow-up que
 
 Flag an operation that should be atomic but isn't wrapped in a transaction, and flag a transaction boundary that is wider than necessary in a way that risks lock contention or extends blast radius. Flag a read-then-write sequence on a value that can be concurrently modified with no locking or optimistic-concurrency mechanism (a classic lost-update race), where the material shows concurrent access is plausible.
 
+### Connection and Transaction Lifecycle
+
+For any manually acquired connection or transaction, apply `skills/data-access-reliability/SKILL.md`: released exactly once on every path, rollback before every early exit, every write through the transaction's own handle, nothing slow or unbounded done while it is held, and deadlock retries only around a fully atomic unit. Report violations through this Skill's own severity and Child Governance mechanism.
+
 ### Migration Safety
 
 Flag a migration that would fail, lock the table for an unacceptable duration, or lose data against a production-scale existing table — a column addition with a non-null default that requires a full table rewrite on some engines, a destructive column drop with no verified-unused confirmation, or a rename that isn't backward-compatible with code still running the previous version during a rolling deploy. State which of these applies based on the repository's actual declared engine, not a different engine's behavior.
@@ -121,3 +125,4 @@ A structured review: Summary, Findings (each with Severity, Category, Location, 
 - `skills/code-review/SKILL.md` — Related: shares the Child Governance mechanism and Expected Output shape; neither Skill requires the other's output to function.
 - `skills/performance-review/SKILL.md` — Related: this Skill flags structurally risky query *patterns* (N+1, missing index) without measuring actual latency; `performance-review` owns measured performance verification and may hand a schema/index fix back to this Skill, but neither depends on the other's output to begin its own review.
 - `skills/security-review/SKILL.md` — Related: application-level authorization logic that happens to touch the database (e.g. a query missing a tenant-scoping filter) is that Skill's AuthZ/IDOR concern, not this Skill's data-integrity concern, even though both may examine the same query.
+- `skills/data-access-reliability/SKILL.md` — consumed by Rules → Connection and Transaction Lifecycle; owns the connection/transaction-holding pattern this Skill checks specific code against.

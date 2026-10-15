@@ -353,7 +353,7 @@ python3 scripts/run_skill_test_evidence_tests.py
 
 ## Skills Catalog
 
-All 32 skills are repository-independent and available across both platforms (in Claude Code, prefix each with `engineering-mentor:`):
+All 33 skills are repository-independent and available across both platforms (in Claude Code, prefix each with `engineering-mentor:`):
 
 | Skill | Category | Description |
 |---|---|---|
@@ -366,6 +366,7 @@ All 32 skills are repository-independent and available across both platforms (in
 | `performance-review` | Review | Analyze resource bottlenecks, N+1 query patterns, indexing, and latency risks. |
 | `api-contract-design` | Implementation | Design backwards-compatible, robust API contracts and specifications. |
 | `idempotency` | Implementation | Design and review idempotent operations, deduplication keys, and retry safety. |
+| `data-access-reliability` | Domain Patterns | Connection and transaction lifecycle, hold-and-wait pool deadlock, pool budgeting, lock contention, safe deadlock retry, and once-per-period jobs/migrations across instances. |
 | `uuid-strategy` | Implementation | Select and apply primary key / identifier strategies (UUIDv4, UUIDv7, ULID, BigInt). |
 | `soft-delete` | Implementation | Implement safe soft-delete patterns, uniqueness handling, and cascade strategies. |
 | `validation` | Implementation | Implement multi-layer input validation, sanitization, and invariant protection. |
@@ -435,4 +436,4 @@ Engineering Mentor uses semantic versioning for releases:
 - **MINOR** — backward-compatible new Skills, standards, SOPs, or capabilities.
 - **PATCH** — clarifications, corrections, and non-breaking improvements.
 
-Child repositories should pin or intentionally select a Mentor version rather than silently receiving uncontrolled breaking changes. See `docs/Versioning Strategy.md` for details. The current manifest version is `2.1.0`; `.claude-plugin/plugin.json` and the Antigravity `plugin.json` must always carry the same version (enforced by `scripts/validate_claude_plugin.py`). Claude Code users receive a release only when this version changes, so bump it on every release.
+Child repositories should pin or intentionally select a Mentor version rather than silently receiving uncontrolled breaking changes. See `docs/Versioning Strategy.md` for details. The current manifest version is `2.2.0`; `.claude-plugin/plugin.json` and the Antigravity `plugin.json` must always carry the same version (enforced by `scripts/validate_claude_plugin.py`). Claude Code users receive a release only when this version changes, so bump it on every release.

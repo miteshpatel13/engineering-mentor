@@ -2,6 +2,9 @@
 
 - [ ] Authentication reviewed
 - [ ] Authorization reviewed
+- [ ] Every client-supplied identifier (body, params, query, realtime/socket payload, job payload) is verified against the caller's tenant before use
+- [ ] Revoking access invalidates cached authorization immediately
+- [ ] Missing secrets/config fail closed at startup; secrets compared in constant time
 - [ ] Input validation reviewed
 - [ ] Injection risks reviewed
 - [ ] Secrets protected

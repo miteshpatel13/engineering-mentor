@@ -1,6 +1,6 @@
 ---
 name: mentor-development
-description: Guidance for developing, maintaining, reviewing, and extending the Engineering Mentor repository itself — how to create and test Mentor Skills, develop Mentor Agents, maintain global context, avoid project-specific leakage, review changes, and follow versioning and governance rules. Use when creating or modifying a Skill, Agent, or standard in this repository, reviewing a proposed change to it, or deciding whether a piece of guidance belongs in the Mentor versus a child repository.
+description: Guidance for developing, maintaining, reviewing, and extending the Engineering Mentor repository itself — how to create and test Mentor Skills, develop Mentor Agents, maintain global context, avoid project-specific leakage, review changes, and follow versioning and governance rules. Use when creating or modifying a Skill, Agent, or standard in this repository, reviewing a proposed change to it, deciding whether a piece of guidance belongs in the Mentor versus a child repository, or evolving the Mentor from a child repository's incidents, audits, or remediation plans (splitting global principles into Mentor Skills and project specifics into the child's own skills).
 category: Mentor Core
 skillType: Mentor Core
 ---
@@ -27,7 +27,7 @@ The file(s) or proposed change under review or being created; the relevant Devel
 
 ## Workflow
 
-This Skill governs several distinct activities rather than one linear sequence — creating a Skill, testing a Skill, developing an Agent, maintaining global context, avoiding leakage, and reviewing a change each have their own steps, stated under their own heading below (How Mentor Skills Should Be Created gives the one genuinely ordered sequence, in Skill-creation specifically). State plainly which activity applies before proceeding, rather than forcing all of them through a single numbered flow that doesn't fit every case.
+This Skill governs several distinct activities rather than one linear sequence — creating a Skill, testing a Skill, developing an Agent, maintaining global context, avoiding leakage, reviewing a change, and evolving the Mentor from child-repository learnings each have their own steps, stated under their own heading below (How Mentor Skills Should Be Created gives the one genuinely ordered sequence, in Skill-creation specifically). State plainly which activity applies before proceeding, rather than forcing all of them through a single numbered flow that doesn't fit every case.
 
 ## Mentor vs Child Architecture
 
@@ -87,6 +87,21 @@ The Mentor uses semantic versioning (`docs/Versioning Strategy.md`): MAJOR for b
 ## Repository Governance
 
 Keep global guidance reusable and technology-aware. Do not add project-specific business rules to global standards. When changing a global Skill, Standard, or SOP, consider backward compatibility and add regression coverage when practical. When a recurring engineering problem is discovered in a child repository, determine whether it is project-specific or globally applicable — globally applicable improvements belong in the Mentor and should include regression coverage when practical.
+
+## Evolving the Mentor from Child-Repository Learnings
+
+The Mentor improves itself from real evidence: incident reports, post-mortems, audit and remediation plans, and recurring review findings in child repositories. This is the one standing way it grows besides deliberate authoring. When such a source is provided (or a recurring problem is noticed while working in a child repository), run this loop:
+
+1. **Harvest.** List every distinct problem in the source with its evidence (symptom, root cause, fix, how it was verified). Discard items the source itself proved wrong — a corrected finding is not a lesson.
+2. **Classify each item** using How to Avoid Project-Specific Leakage: *global principle* (true on any stack — e.g. "never hold a database connection across an external call"), *global-but-stack-shaped* (generalize it to the principle first), or *project-specific* (a file, helper, table, threshold, vendor, or business rule — e.g. "use our `runOnce` helper in `crons/`").
+3. **Route project-specific items to the child.** Write or update a skill in the child repository's own `.claude/skills/` that names its concrete helpers, files, open gaps, and the source document — and points to the Mentor Skills that hold the principles. The Mentor never receives these details.
+4. **Find the Mentor's home for each global item**, in this order: an existing Skill's Rules (check `docs/Skill Taxonomy.md` Section 5 overlap rules first), an existing Standard or Checklist under `context/`, or — only when no existing Skill owns the problem and it is a coherent, distinct domain — a new Skill created per How Mentor Skills Should Be Created. Prefer extending over creating.
+5. **Write the change as a principle with its failure mode**, not as the incident story: the rule, why it fails without it, and how to detect it. A diagnostic signature (symptom → likely cause) is worth recording when the symptom appears far from the cause.
+6. **Add regression coverage** for each new Rule: at least one fixture under `tests/skill-tests/<skill>/` built from a sanitized version of the real case (no child names, paths, or data), plus the five required categories for a new Skill (`docs/Skill Testing Standard.md`).
+7. **Update the record**: `docs/Skill Ecosystem Inventory.md` for a new or materially changed Skill, a MINOR version bump in both plugin manifests for new Rules or Skills (PATCH for clarifications), and the validators listed under Validation.
+8. **Report the split** back to the user: what went to the Mentor, what stayed in the child, and what was deliberately not generalized.
+
+Never copy a child's incident wording, identifiers, or numbers into Mentor content; never promote a child's owner decision (e.g. "migrations are applied manually") into a Mentor rule; and never mark a new Rule Mandatory unless it instantiates an existing Standard — extend the Standard first (Repository Governance).
 
 ## Rules
 
