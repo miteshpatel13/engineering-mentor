@@ -77,6 +77,18 @@ Flag a dependency with a known vulnerability (a CVE or equivalent advisory) when
 
 Flag untrusted input written into a log entry with no sanitization against log injection/forging — a user-controlled string containing newline or control characters can fabricate what appears to be a separate, legitimate log line. This is distinct from Secrets and Sensitive Data (above), which governs what must never be logged; this Rule governs how logged input is written. Separately, flag the absence of logging for security-relevant events (authentication failures, authorization denials, privilege changes) on a security-sensitive surface, where an incident investigation would otherwise have no record to work from.
 
+### Tenant Scoping of Client-Supplied Identifiers
+
+In a multi-tenant system, every identifier the client supplies — path/query parameters, body fields, arrays of IDs, **realtime/socket event payloads**, and queued job payloads — must be proven to belong to the caller's tenant before it is read or written: either the tenant predicate is in the same query (the `WHERE` of both the read and the update/delete), or ownership is verified first. The caller's tenant and identity come from the authenticated context (session, token, authenticated socket handshake), never from the payload. For a batch of IDs, reject the whole request if any ID is foreign — silently acting on the owned subset hides probing and leaves partial effects. One confirmed instance of a missing tenant predicate is evidence of a systemic pattern when authorization is hand-rolled per service: recommend an inventory sweep (every request-supplied ID reaching a query, update, delete, or socket handler) rather than a single point fix, and prefer a shared ownership check over re-implementing it per call site. Do not recommend turning on a coarse global role guard as the fix — role checks don't add the missing query-level predicate.
+
+### Revocation and Cached Authorization
+
+When authorization data is cached (session/token validation, role or membership lookups, per-user assignment lists), every revoking action — removing or deactivating a member, changing a role, ending a session — must invalidate those cache entries in the same operation, through the system's central cache-key definitions rather than ad hoc key strings. Flag revocation that only takes effect when a TTL expires: for that window a removed user keeps access.
+
+### Fail-Closed Configuration and Secret Comparison
+
+Flag security controls whose behavior depends on configuration that can be missing: a comparison like `provided !== process.env.SECRET` passes everyone when both sides are undefined. Required secrets and security settings must be validated at startup and the process must refuse to start without them; shared secrets are compared in constant time. Also flag keys committed to source (including in history — removal is not enough until the key is rotated) and observability agents that can report from developer machines into production.
+
 ### Child Governance, Including Security Exceptions
 
 When context discovery obtained parsed child rules and/or exceptions, apply the same discipline `skills/code-review/SKILL.md`'s Child Governance section defines. A child rule or exception that attempts to weaken a security- or safety-classified Mentor Mandatory requirement is always a Prohibited Override (`docs/Governance Precedence Model.md` Section 9) — the underlying finding is preserved and reported at full severity regardless of the rule's or exception's own classification or approval status, and the attempted override is separately reported as a governance conflict, never silently honored.

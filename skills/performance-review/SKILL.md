@@ -60,6 +60,14 @@ Flag when a proposed optimization introduces its own risk — a cache with no in
 
 Every accepted optimization requires a stated verification step: what to re-measure, against what target, after the change ships. A performance fix with no verification step is not actually confirmed to work — this Skill requires the step be stated, even when it can't itself execute the re-measurement.
 
+### Stall Signatures Point at Shared Resources
+
+Read the shape of the evidence before blaming a query: a normal median with a huge average or maximum on trivial operations (tiny config-table reads), or stalls clustered in time across many unrelated endpoints on every instance at once, indicate **waiting for a shared resource** — an exhausted or self-deadlocked connection pool, leaked connections, or a lock — not slow SQL. Correlate the stall times with scheduled jobs, deploys, and traffic, and diagnose with `skills/data-access-reliability/SKILL.md`'s Diagnostic signatures before proposing an index or a cache. Likewise check the distribution, not just the average, before setting a target.
+
+### External Calls Bound the Request
+
+Every outbound network call on a request path needs an explicit timeout; a slow third party with no timeout turns into a request that hangs for minutes and holds whatever resources it took (a connection, a lock, a worker). Flag non-essential side effects (welcome or notification messages) performed synchronously on the request path or allowed to fail the business action; recommend making them non-fatal and, where volume warrants, moving them to a queue.
+
 ### Child Governance
 
 When context discovery obtained parsed child rules and/or exceptions relevant to performance (e.g. a declared SLA or a resource-usage constraint), apply the same discipline `skills/code-review/SKILL.md`'s Child Governance section defines — applicability against the rule's own scope text, deterministic classification via `scripts/evaluate_governance.py` (`docs/Governance Evaluation.md`).
@@ -107,3 +115,4 @@ A structured review: Summary, measurable Target (stated or flagged as missing), 
 - `skills/database-review/SKILL.md` — Related: that Skill flags structurally risky query patterns before any measurement exists; this Skill picks up once a concrete measured slowness exists and may hand a diagnosed query-level bottleneck back for a schema/index-level fix, but neither requires the other's output to begin its own review.
 - `skills/architecture-review/SKILL.md` — Related: that Skill flags a design's inherent scaling ceiling structurally; this Skill measures actual behavior against a target. Neither depends on the other's output.
 - `skills/documentation/SKILL.md` — Related: shares the same discipline against recording an unmeasured number as a measured result, applied in a different domain (documentation of results vs. diagnosis of causes); neither Skill requires the other's output to function.
+- `skills/data-access-reliability/SKILL.md` — consumed by Rules → Stall Signatures Point at Shared Resources for diagnosing pool exhaustion, leaks and lock contention.

@@ -213,3 +213,4 @@ A review formatted per `context/templates/Review Template.md`:
 -  — Related: evaluates test suite coverage, test design, and test adequacy.
 -  — Related: evaluates database migrations, query efficiency, and schema constraints.
 -  — Related: invoked by step 0 of this Skill's workflow to discover repository context, rules, and exceptions.
+- `skills/data-access-reliability/SKILL.md` — reference for connection release and transaction-boundary correctness in a diff.
