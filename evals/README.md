@@ -26,6 +26,7 @@ Cases use the official [`claude plugin eval`](https://code.claude.com/docs/en/pl
 | `bug-workflow-null-pointer` | Bug workflow | any / none | A small crash gets cause → fix → test, never specify/plan/tasks |
 | `codebase-orientation-no-graft` | Codebase context (Graft) | `codebase-orientation` | Without a Graft graph, the footprint of a column split is built by direct inspection and includes the SQL view consumer |
 | `question-no-spec-workflow` | Negative control | none | A simple "what does this do?" is answered without the spec workflow |
+| `complex-thinking-capacity-transcript` | People assessment | `complex-thinking-capacity` | A 5-round QA interview transcript is scored with quoted evidence; composure stays low despite the reflection round, the pressure drop is reported, and the candidate is not cleared for release sign-off |
 
 Cases with a `case.yaml` seed the workspace with a `setup.sh` scaffold — a Spec Kit project layout (`.specify/`, `specs/`, `speckit-*` skill stubs) or a small repository — so pass `--scaffold` to run them. The scaffolds contain only fixture files written for these evals; no Spec Kit or Graft code is copied or executed.
 

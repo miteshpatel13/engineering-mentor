@@ -52,3 +52,4 @@ Use the specialized Engineering Mentor skills on demand for specific workflows:
 - Data Integrity & Patterns: `idempotency`, `uuid-strategy`, `soft-delete`, `validation`, `database-indexing`
 - Testing & Performance: `testing-review`, `performance-review`, `jmeter-performance-testing`, `algorithm-complexity`
 - Requirements & Context: `requirements-discipline`, `context-discovery`
+- People & Decision Assessment: `complex-thinking-capacity` (structured scenario interview for hiring, development, or stress-testing the reasoning in a plan)
